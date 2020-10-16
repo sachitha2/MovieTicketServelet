@@ -12,6 +12,6 @@ public class Basic extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		out.println("Hello World");
+		out.println("<h1>Hello World</h1>");
 	}
 }
