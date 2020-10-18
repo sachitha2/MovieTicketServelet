@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("uname", uname);
 			response.sendRedirect("adminindex.jsp");
 		}else {
-			response.sendRedirect("login/index.jsp?err=e");
+			response.sendRedirect("index.jsp?err=e");
 		}
 		
 	}
