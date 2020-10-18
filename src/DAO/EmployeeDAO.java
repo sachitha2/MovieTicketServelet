@@ -1,5 +1,30 @@
 package DAO;
 
-public class EmployeeDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+public class EmployeeDAO {
+	Connection connection=null;
+    
+
+	public EmployeeDAO(Connection connection) {
+		this.connection = connection;
+	}
+	
+	public ResultSet  EmployeeList() {
+		PreparedStatement ps=null;
+	    String query="SELECT * FROM employee;";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        
+	            return rs;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return null;
+	}
 }

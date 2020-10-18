@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DepartmentDAO {
-Connection connection=null;
+	Connection connection=null;
     
 
 	public DepartmentDAO(Connection connection) {
