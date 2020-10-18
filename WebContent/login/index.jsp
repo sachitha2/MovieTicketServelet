@@ -1,3 +1,4 @@
+<%@ page import = "java.io.*,java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,8 +47,15 @@
 						<input class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
-
+						<p style="text-align:center;font-size:20px;color:red">
+						<%
+							if(request.getParameter("err")!=null){
+								out.print("Wrong password!");
+							}
+						%>
+						</p>
 					<div class="container-login100-form-btn m-t-32">
+						
 						<button class="login100-form-btn">
 							Login
 						</button>
