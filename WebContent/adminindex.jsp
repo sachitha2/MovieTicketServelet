@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Dashboard</title>
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
-<%@include file="adminnavbar.jsp" %>
+  <%@include file="adminnavbar.jsp" %>
     <div class="content">
         <div class="cardcontainer">
             <div class="card">
@@ -59,9 +59,10 @@
               </table>
         </div>
         <div class="buttoncontainer">
-            <a href="#" class="admin-btn">Apply Leave</a> 
+          <a href="#" class="admin-btn">Add Leave Type</a> 
             <a href="#" class="admin-btn">Add Employees</a> 
-            <a href="#" class="admin-btn">Add Departments</a> 
+            <a href="#" class="admin-btn">Add Departments</a>
+            <a href="#" class="admin-btn">Apply Leave</a>  
         </div>
     </div>
 </body>

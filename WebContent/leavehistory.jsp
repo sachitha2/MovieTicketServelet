@@ -3,23 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dashboard - Employee</title>
+        <title>Leave History</title>
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
   <%@include file="adminnavbar.jsp" %>
-    <div class="content">
-        <div class="cardcontainer">
-            <div class="card">
-                <div class="card-title" style="font-size: 17px;">Leaves Remaining</div>
-                <div class="card-content" >10</div>
-            </div>
-            <div class="card">
-                <div class="card-title" style="font-size: 17px;">Leaves Taken</div>
-                <div class="card-content" >100</div>
-            </div>
-        </div>
-        <h2>Leave History</h2>
+    <div class="content" style="margin-top: 80px;">
+        <h2>My Leave History</h2>
         <div class="maincontainer">
             <table>
                 <tr>

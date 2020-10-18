@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
+  <%@include file="adminnavbar.jsp" %>
     <div class="content">
        <h2>Department List</h2>
        <div style="border: 2px solid #000; height: auto;margin-right: 200px;">
