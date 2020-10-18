@@ -1,3 +1,11 @@
+<%@ page import="DAO.LoginDAO"%>
+<%@ page import="Employee.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  LoginDAO loginDAO =new  LoginDAO(connection);
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,31 +27,29 @@
               <th>Leaves taken</th>
               <th>Action</th>
             </tr>
-            <tr>
-              <td>001</td>
-              <td>Griffin</td>
-              <td>3</td>
-              <td><a href="viewemp.jsp"><button class="accept-btn">View more</button></a></td>
-            </tr>
-            <tr>
-              <td>002</td>
-              <td>Griffin</td>
-              <td>$150</td>
-              <td><button class="accept-btn">Remove</button></td>
-            </tr>
-            <tr>
-              <td>003</td>
-              <td>Swanson</td>
-              <td>$300</td>
-              <td><button class="accept-btn">Remove</button></td>
-            </tr>
-            <tr>
-              <td>004</td>
-              <td>Brown</td>
-              <td>$250</td>
-              <td><button class="accept-btn">Remove</button></td>
-            </tr>
-            
+
+			<%
+				try {
+			    	ResultSet rs = loginDAO.userList();
+			    	
+					while(rs.next()) {
+						%>
+						<tr>
+						<td>//TODO</td>
+              			<td><% out.print(rs.getString("username")); %></td>
+             			 <td>3</td>
+             			 <td><a href="viewemp.jsp"><button class="accept-btn">View more</button></a></td>
+             			 </tr>
+						<%
+						//
+						//
+						//;
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			%>
           </table>
        </div>
     </div>
