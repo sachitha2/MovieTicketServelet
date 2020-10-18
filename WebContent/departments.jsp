@@ -45,7 +45,7 @@
           </table>
        </div>
        <br><br><br>
-       <a href="#" class="admin-btn" style="width:180px;">Add Department</a>
+       <a href="adddepartment.jsp" class="admin-btn" style="width:180px;">Add Department</a>
     </div>
 </body>
 </html>
