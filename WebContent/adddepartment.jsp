@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
+    <%@include file="adminnavbar.jsp" %>
     <div class="content">
        <h2>Add Department</h2>
        <div class="mini-container">

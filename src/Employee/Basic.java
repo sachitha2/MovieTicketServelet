@@ -28,6 +28,7 @@ public class Basic extends HttpServlet {
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 out.println(rs.getString("id")+" - "+rs.getString("username"));
+                out.println("<br>");
             }
         } catch (SQLException e) {
             e.printStackTrace();

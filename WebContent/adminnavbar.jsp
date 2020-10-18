@@ -23,7 +23,6 @@
         <a class="sub" href="#about"  >Leave History</a>
         <a class="sub" href="#about"  >Add Leave</a>
         <a href="#contact">Salary Management</a>
-        <a href="#contact">Salary Management</a>
         <a class="sub" href="#about"  >Profile</a>
         <a class="sub" href="#about"  >Change Password</a>
         <a href="#contact">Log Out</a>

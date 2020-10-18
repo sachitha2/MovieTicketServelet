@@ -104,9 +104,8 @@ body {
 .buttoncontainer{
     margin-left: 120px;
     float: left;
-    /* border-style: solid; */
     height: 400px;
-    width: 200px;
+    width: 100px;
 }
 .admin-btn {
     padding: 10px 25px;
