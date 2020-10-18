@@ -11,6 +11,8 @@
        <h2>Apply for Leave</h2>
        <div class="mini-container">
         <form action="" method="post">
+            <label for="empid" class="label">Employee ID</label>
+            <input type="text" name="" id="empid" required><br>
             <label for="leavetype" class="label">Leave Type</label>
             <select name="leavetype" id="leavetype" required>
                 <option value="c" selected>--- Select one</option>
