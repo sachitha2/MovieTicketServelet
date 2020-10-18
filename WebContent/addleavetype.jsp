@@ -3,45 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Leave Types</title>
+        <title>Add Leave Type</title>
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
-  <%@include file="adminnavbar.jsp" %>
-    <div class="content" style="margin-top: 80px;">
-        <h2>Leave Types</h2>
-        <div class="maincontainer">
-            <table>
-                <tr>
-                  <th>Leave Type</th>
-                  <th>Max Leaves</th>
-                  <th>Update</th>
-                  <th>Delete</th>
-                </tr>
-                <tr>
-                  <td>Casual</td>
-                  <td>2020/11/01</td>
-                  <td><button class="accept-btn">Update</button></td>
-                  <td><button class="accept-btn">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Sick</td>
-                  <td>2020/11/01</td>
-                  <td><button class="accept-btn">Update</button></td>
-                  <td><button class="accept-btn">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Work from Home</td>
-                  <td>2020/11/01</td>
-                  <td><button class="accept-btn">Update</button></td>
-                  <td><button class="accept-btn">Delete</button></td>
-                </tr>
-                
-              </table>
-        </div>
-        <div class="buttoncontainer">
-            <a href="#" class="admin-btn">Add Type</a> 
-        </div>
+    <%@include file="adminnavbar.jsp" %>
+    <div class="content">
+       <h2>Add Leave Type</h2>
+       <div class="mini-container" style="height: 450px;">
+        <form action="" method="post">
+            <label for="ltype" class="label">Leave Type</label>
+            <input type="text" name="" id="ltype" required><br>
+            <label for="num" class="label">Max Leaves </label>
+            <input type="number" name="" id="num" required><br>
+            <br><br>
+            <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"> <input type="reset" class="accept-btn">
+            
+        </form>
+       </div>
     </div>
 </body>
 </html>

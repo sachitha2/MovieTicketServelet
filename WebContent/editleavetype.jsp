@@ -13,9 +13,9 @@
        <div class="mini-container" style="height: 450px;">
         <form action="" method="post">
             <label for="ltype" class="label">Leave Type</label>
-            <input type="text" name="" id="ltype" required><br>
+            <input type="text" name="" id="ltype" value="##" required><br>
             <label for="num" class="label">Max Leaves </label>
-            <input type="number" name="" id="num" required><br>
+            <input type="number" name="" id="num" value="" required><br>
             <br><br>
             <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"> <input type="reset" class="accept-btn">
             

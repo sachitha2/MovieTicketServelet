@@ -36,7 +36,7 @@
                   <td>001</td>
                   <td>Griffin</td>
                   <td>Casual</td>
-                  <td><button class="accept-btn">Accept</button><button class="accept-btn">Reject</button></td>
+                  <td><a href=""><button class="accept-btn">Accept</button></a><a href="#1"><button class="accept-btn">Reject</button></a></td>
                 </tr>
                 <tr>
                   <td>Lois</td>
@@ -59,10 +59,10 @@
               </table>
         </div>
         <div class="buttoncontainer">
-          <a href="#" class="admin-btn">Add Leave Type</a> 
-            <a href="#" class="admin-btn">Add Employees</a> 
-            <a href="#" class="admin-btn">Add Departments</a>
-            <a href="#" class="admin-btn">Apply Leave</a>  
+          <a href="addleavetype.jsp" class="admin-btn">Add Leave Type</a> 
+            <a href="addemp.jsp" class="admin-btn">Add Employees</a> 
+            <a href="adddepartment.jsp" class="admin-btn">Add Departments</a>
+            <a href="applyleave.jsp" class="admin-btn">Apply Leave</a>  
         </div>
     </div>
 </body>
