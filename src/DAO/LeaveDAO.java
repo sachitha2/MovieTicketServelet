@@ -15,7 +15,7 @@ public class LeaveDAO {
 	
 	public ResultSet  EmployeeList() {
 		PreparedStatement ps=null;
-	    String query="SELECT * FROM leave;";
+	    String query="SELECT * FROM e_leave;";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ResultSet rs=ps.executeQuery();

@@ -1,3 +1,12 @@
+<%@ page import="DAO.*"%>
+<%@ page import="Employee.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  LeaveDAO leaveDAO=new LeaveDAO(connection);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,37 +20,29 @@
     <div class="content" style="margin-top: 80px;">
         <h2>My Leave History</h2>
         <div class="maincontainer">
-            <table>
-                <tr>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th>Leave Type</th>
-                  <th>Status</th>
-                </tr>
-                <tr>
-                  <td>2020/10/10</td>
-                  <td>2020/11/01</td>
-                  <td>Casual</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>2020/10/10</td>
-                  <td>2020/11/01</td>
-                  <td>Casual</td>
-                  <td>Accepted</td>
-                </tr>
-                <tr>
-                  <td>2020/10/10</td>
-                  <td>2020/11/01</td>
-                  <td>Sick</td>
-                  <td>Rejected</td>
-                </tr>
-                <tr>
-                  <td>2020/10/10</td>
-                  <td>2020/11/01</td>
-                  <td>Sick</td>
-                  <td>Rejected</td>
-                </tr>
+            <table>            
+                <%
+				try {
+			    	ResultSet rs = leaveDAO.EmployeeList();
+			    	
+					while(rs.next()) {
+						%>
+						<tr>
+		                  <td><% out.print(rs.getString("sDate")); %></td>
+		                  <td><% out.print(rs.getString("eDate")); %></td>
+		                  <td><% out.print(rs.getString("reason")); %></td>
+		                  <td><% out.print(rs.getString("status")); %></td>
+		                </tr>
+						<%
+						//
+						//
+						//;
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			%>
               </table>
         </div>
         <div class="buttoncontainer">

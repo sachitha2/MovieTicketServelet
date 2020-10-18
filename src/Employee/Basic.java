@@ -30,7 +30,6 @@ public class Basic extends HttpServlet {
 	    try {
 	    	ResultSet rs = loginDAO.userList();
 			while(rs.next()) {
-				out.print(rs.getString("id"));
 				out.println("<br>");
 				out.print(rs.getString("username"));
 			}
