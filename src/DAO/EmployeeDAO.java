@@ -73,6 +73,24 @@ public class EmployeeDAO {
 		
 		return false;
 	}
+	
+	
+	public boolean updateData(EmployeeModel empModel) {
+		PreparedStatement ps=null;
+		 
+	    String query="UPDATE employee SET name = '"+empModel.getName()+"', dob = '"+empModel.getDob()+"', address = '"+empModel.getAddress()+"', mobile = '"+empModel.getMobile()+"', email = '"+empModel.getEmail()+"', nic = '"+empModel.getNic()+"', username = '"+empModel.getUsername()+"', pass = '"+empModel.getPass()+"' WHERE employee.id = "+empModel.getId()+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
+		return false;
+	}
 	public boolean del(String id) {
 		PreparedStatement ps=null;
 	    String query="DELETE FROM employee WHERE employee.id = "+id+";";
