@@ -5,21 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Model.EmployeeModel;
 import Model.LeaveModel;
 import Model.LeavetypeModel;
-import Model.UserModel;
 
-public class LoginDAO {
+public class LeaveTypeDAO {
 	Connection connection=null;
-	public String table = "user";
+	public String table = "leavetype";
     
 
-	public LoginDAO(Connection connection) {
+	public LeaveTypeDAO(Connection connection) {
 		this.connection = connection;
 	}
 	
-	public ResultSet  userList() {
+	public ResultSet  leaveList() {
 		PreparedStatement ps=null;
 	    String query="SELECT * FROM "+table+";";
 	    try {
@@ -56,10 +54,9 @@ public class LoginDAO {
 		return c;
 	}
 	
-	
-	public boolean addData(UserModel uModel) {
+	public boolean addData(LeavetypeModel levTyModel) {
 		PreparedStatement ps=null;
-	    String query="INSERT INTO user (username, password,type) VALUES ('"+uModel.getUsername()+"', '"+uModel.getPassword()+"', '"+uModel.getType()+"');";
+	    String query="INSERT INTO leavetype (id, type, maxLeaves) VALUES (NULL, '"+levTyModel.getType()+"', '"+levTyModel.getMaxLeaves()+"');";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ps.executeUpdate();
@@ -72,9 +69,9 @@ public class LoginDAO {
 		
 		return false;
 	}
-	public boolean del(String name) {
+	public boolean del(String id) {
 		PreparedStatement ps=null;
-	    String query="DELETE FROM user WHERE user.username = "+name+";";
+	    String query="DELETE FROM leavetype WHERE leavetype.id = "+id+";";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ps.executeUpdate();
@@ -87,7 +84,6 @@ public class LoginDAO {
 		return false;
 		
 	}
-		//TODO EDIT
-		//TODO Take a data from passing id
-    
+	//TODO EDIT
+	//TODO Take a data from passing id
 }

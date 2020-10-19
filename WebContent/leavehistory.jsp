@@ -46,7 +46,7 @@
               </table>
         </div>
         <div class="buttoncontainer">
-            <a href="#" class="admin-btn">Apply Leave</a> 
+            <a href="applyleave.jsp" class="admin-btn">Apply Leave</a> 
         </div>
     </div>
 </body>

@@ -1,10 +1,10 @@
-<%@ page import="DAO.LoginDAO"%>
+<%@ page import="DAO.EmployeeDAO"%>
 <%@ page import="Employee.DB"%>
 <%@ page import="java.sql.*"%>
 <%  DB obj_DB_Connection=new DB();
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
-  LoginDAO loginDAO =new  LoginDAO(connection);
+  EmployeeDAO DAO =new  EmployeeDAO(connection);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,15 +30,15 @@
 
 			<%
 				try {
-			    	ResultSet rs = loginDAO.userList();
+			    	ResultSet rs = DAO.EmployeeList();
 			    	
 					while(rs.next()) {
 						%>
 						<tr>
-						<td>//TODO</td>
+						<td><% out.print(rs.getString("id")); %></td>
               			<td><% out.print(rs.getString("username")); %></td>
-             			 <td>3</td>
-             			 <td><a href="viewemp.jsp"><button class="accept-btn">View more</button></a></td>
+             			 <td>//TODO</td>
+             			 <td><a href="viewemp.jsp?id=<% out.print(rs.getString("id"));  %>"><button class="accept-btn">View more</button></a></td>
              			 </tr>
 						<%
 						//

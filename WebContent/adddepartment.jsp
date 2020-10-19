@@ -11,14 +11,20 @@
     <div class="content">
        <h2>Add Department</h2>
        <div class="mini-container">
-        <form action="" method="post">
-            <label for="depname" class="label1">Depatment Name</label>
-            <input type="text" name="depname" id="depname" required><br>
+        <form action="AddDepartment" method="post">
             <label for="depid" class="label1">Department ID</label>
-            <input type="text" name="depid" id="depid"><br>
-            <label for="nemp" class="label1">No. of Employees</label>
-            <input type="number" value="" name="nemp" id="nemp" step="1" min="1" required><br>
-            <input class="accept-btn" type="submit" name="" style="margin-right:150px ;"> <input type="reset" class="accept-btn">
+            <input type="text" name="id" id="depid" readonly><br>
+            <label for="depname" class="label1">Depatment Name</label>
+            <input type="text" name="name" id="depname" required><br>
+            <p style="text-align:center;font-size:20px;color:red">
+                <%
+                if(request.getParameter("msg")!=null){
+                out.print(request.getParameter("msg"));
+                }
+                %>
+                </p>
+            <input class="accept-btn" type="submit" name="addDep" style="margin-right:150px ;"> 
+            <a href="adminindex.jsp"><input type="button" value="Cancel" class="accept-btn" ></a>
             
         </form>
        </div>

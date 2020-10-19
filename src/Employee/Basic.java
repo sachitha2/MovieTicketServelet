@@ -12,8 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.DepartmentDAO;
 import DAO.EmployeeDAO;
+import DAO.LeaveDAO;
+import DAO.LeaveTypeDAO;
 import DAO.LoginDAO;
+import Model.DepartmentModel;
+import Model.EmployeeModel;
+import Model.LeaveModel;
+import Model.LeavetypeModel;
+import Model.UserModel;
 
 public class Basic extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,22 +34,28 @@ public class Basic extends HttpServlet {
 	    connection=obj_DB_Connection.get_connection();
         
 	    
-	    LoginDAO loginDAO =new  LoginDAO(connection);
 	    
-	    EmployeeDAO empDAO = new EmployeeDAO(connection);
 	    
-	    out.println("<h1>"+empDAO.GetTotCount()+"</h1>");
 	    
-	    try {
-	    	ResultSet rs = loginDAO.userList();
-			while(rs.next()) {
-				out.println("<br>");
-				out.print(rs.getString("username"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    
+	    
+	    
+	    
+	    
+	    //leaveDAO
+	    out.println("<h1>Add leave</h1>");
+	    LeaveDAO levDAO = new LeaveDAO(connection);
+	    
+	    LeaveModel levModel = new LeaveModel(0,"1","2020-10-25","2020-10-11","reason",1);
+	    out.println("<br>"); 
+	    out.println(levDAO.addData(levModel));
+	    
+	    
+	    
+	    
+	    
+	 
+	    
 
 	}
 }
