@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.DepartmentDAO;
+import DAO.EmployeeDAO;
 
 @WebServlet("/EmpDel")
 public class EmpDel extends HttpServlet {
@@ -25,8 +26,8 @@ public class EmpDel extends HttpServlet {
 		//handle delete here
 		if(request.getParameter("id")!=null){
 			out.println("<p>Done</p>");
-			DepartmentDAO depDAO = new DepartmentDAO(connection);
-			depDAO.del(request.getParameter("id"));
+			EmployeeDAO d = new EmployeeDAO(connection);
+			d.del(request.getParameter("id"));
 		}else {
 			out.println("Delete id not found");
 		}
