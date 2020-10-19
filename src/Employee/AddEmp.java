@@ -35,7 +35,7 @@ public class AddEmp extends HttpServlet {
 		
 		if(request.getParameter("addemp").equals("Submit")) {
 			
-			EmployeeModel empModel = new EmployeeModel(0,"name","2020-10-10","address","mobile","email","nic","uname","pass");
+			EmployeeModel empModel = new EmployeeModel(0,request.getParameter("name"),request.getParameter("dob"),request.getParameter("address"),request.getParameter("mobile"),request.getParameter("email"),request.getParameter("nic"),request.getParameter("username"),request.getParameter("pass"));
 			
 			
 			empDAO.addData(empModel);

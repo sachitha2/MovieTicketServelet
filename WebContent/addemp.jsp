@@ -16,7 +16,7 @@
             <label for="empid" class="label">Employee ID</label>
             <input type="text" name="id" id="empid" disabled><br>
             <label for="name" class="label">Name</label>
-            <input type="text" name="name" id="sdate" required><br>
+            <input type="text" name="name" required><br>
             <label for="dob" class="label">BirthDay</label>
             <input type="date" id="dob" name="dob" required><br>
             <label for="address" class="label">Address</label>
