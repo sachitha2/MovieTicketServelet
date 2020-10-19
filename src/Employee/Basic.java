@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.DepartmentDAO;
 import DAO.EmployeeDAO;
 import DAO.LoginDAO;
+import Model.DepartmentModel;
 
 public class Basic extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,6 +44,14 @@ public class Basic extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
+	    
+	    DepartmentDAO depDAO = new DepartmentDAO(connection);
+	    
+	    DepartmentModel dep = new DepartmentModel(0,"sachitha department");
+	    out.println("<br>");
+	    out.println(depDAO.addData(dep));
+	    
 
 	}
 }
