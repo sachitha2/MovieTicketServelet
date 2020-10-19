@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import Model.EmployeeModel;
 import Model.LeaveModel;
+import Model.LeavetypeModel;
+import Model.UserModel;
 
 public class LoginDAO {
 	Connection connection=null;
@@ -55,7 +57,21 @@ public class LoginDAO {
 	}
 	
 	
-		//TODO ADD
+	public boolean addData(UserModel uModel) {
+		PreparedStatement ps=null;
+	    String query="INSERT INTO user (username, password,type) VALUES ('"+uModel.getUsername()+"', '"+uModel.getPassword()+"', '"+uModel.getType()+"');";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
+		return false;
+	}
 		//TODO DELETE
 		//TODO EDIT
 		//TODO Take a data from passing id
