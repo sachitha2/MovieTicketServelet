@@ -6,6 +6,8 @@
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
   LeaveDAO DAO =new  LeaveDAO(connection);
+  
+  EmployeeDAO empDAO = new EmployeeDAO(connection);
 %>
 
 <!DOCTYPE html>
@@ -46,13 +48,16 @@
                 <%
 				try {
 			    	ResultSet rs = DAO.PendingLeaves();
+			    	String empId;
 			    	
 					while(rs.next()) {
 						%>
 						<tr>
 		                  <td><% out.print(rs.getString("id")); %></td>
 		                  
-		                  <td>//TODO name here</td>
+		                  <td><% 
+		                  	empId = rs.getString("empId");
+		                  	out.print(empDAO.getEmpName(empId)); %></td>
 		                  
 		                  <td><% out.print(rs.getString("leaveType")); %></td>
 		                  <td><a href="AcceptReject?id=<% out.print(rs.getString("id")); %>&s=1"><button class="accept-btn">Accept</button></a><a href="AcceptReject?id=<% out.print(rs.getString("id")); %>&s=2"><button class="accept-btn">Reject</button></a></td>

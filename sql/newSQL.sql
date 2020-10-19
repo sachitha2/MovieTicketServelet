@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2020 at 04:31 PM
+-- Generation Time: Oct 19, 2020 at 06:39 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -63,7 +63,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `name`, `dob`, `address`, `mobile`, `email`, `nic`, `username`, `pass`) VALUES
-(33, 'nameee', '2020-10-03', '            	            	            	addressvsdvcvds\r\n            \r\n            \r\n            ', '0717191137', 'emailweds@gmailgvsdfcdefdcom', '983142044v', 'samee', 'passfed');
+(33, 'nameee', '2020-10-03', '            	            	            	addressvsdvcvds\r\n            \r\n            \r\n            ', '0717191137', 'emailweds@gmailgvsdfcdefdcom', '983142044v', 'sam', 'pass');
 
 -- --------------------------------------------------------
 
@@ -73,12 +73,12 @@ INSERT INTO `employee` (`id`, `name`, `dob`, `address`, `mobile`, `email`, `nic`
 
 CREATE TABLE `e_leave` (
   `id` int(11) NOT NULL,
-  `leaveType` varchar(1) NOT NULL,
+  `leaveType` varchar(10) NOT NULL,
   `sDate` date NOT NULL,
   `eDate` date NOT NULL,
   `reason` text NOT NULL,
   `status` int(1) NOT NULL COMMENT '0 pending\r\n1 accepted\r\n2 rejected',
-  `empId` varchar(10) NOT NULL
+  `empId` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -86,8 +86,8 @@ CREATE TABLE `e_leave` (
 --
 
 INSERT INTO `e_leave` (`id`, `leaveType`, `sDate`, `eDate`, `reason`, `status`, `empId`) VALUES
-(42, 's', '2020-10-31', '2020-10-31', 'scxz', 0, '0'),
-(43, 's', '2020-10-31', '2020-10-31', 'scxz', 0, '0');
+(47, 's', '2020-10-22', '2020-10-30', 'ds', 0, '10'),
+(48, 'c', '2020-10-23', '2020-10-31', 'gedv', 0, '33');
 
 -- --------------------------------------------------------
 
@@ -196,7 +196,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `e_leave`
 --
 ALTER TABLE `e_leave`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `leavetype`
