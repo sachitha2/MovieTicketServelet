@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2020 at 06:17 PM
+-- Generation Time: Oct 19, 2020 at 06:39 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -73,7 +73,7 @@ INSERT INTO `employee` (`id`, `name`, `dob`, `address`, `mobile`, `email`, `nic`
 
 CREATE TABLE `e_leave` (
   `id` int(11) NOT NULL,
-  `leaveType` varchar(1) NOT NULL,
+  `leaveType` varchar(10) NOT NULL,
   `sDate` date NOT NULL,
   `eDate` date NOT NULL,
   `reason` text NOT NULL,
@@ -86,11 +86,8 @@ CREATE TABLE `e_leave` (
 --
 
 INSERT INTO `e_leave` (`id`, `leaveType`, `sDate`, `eDate`, `reason`, `status`, `empId`) VALUES
-(42, 's', '2020-10-31', '2020-10-31', 'scxz', 2, '0'),
-(43, 's', '2020-10-31', '2020-10-31', 'scxz', 2, '0'),
-(44, 's', '2020-10-21', '2020-10-21', 'vsdc', 2, NULL),
-(45, 's', '2020-10-21', '2020-10-23', 'c x', 1, '10'),
-(46, 's', '2020-10-22', '2020-10-24', 'gfes', 0, '10');
+(47, 's', '2020-10-22', '2020-10-30', 'ds', 0, '10'),
+(48, 'c', '2020-10-23', '2020-10-31', 'gedv', 0, '33');
 
 -- --------------------------------------------------------
 
@@ -199,7 +196,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `e_leave`
 --
 ALTER TABLE `e_leave`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `leavetype`
