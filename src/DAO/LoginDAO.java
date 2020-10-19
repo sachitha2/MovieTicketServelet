@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class LoginDAO {
 	Connection connection=null;
+	public String table = "user";
     
 
 	public LoginDAO(Connection connection) {
@@ -15,7 +16,7 @@ public class LoginDAO {
 	
 	public ResultSet  userList() {
 		PreparedStatement ps=null;
-	    String query="SELECT * FROM user;";
+	    String query="SELECT * FROM "+table+";";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ResultSet rs=ps.executeQuery();
@@ -26,6 +27,28 @@ public class LoginDAO {
 	        e.printStackTrace();
 	    }
 		return null;
+	}
+	
+	
+	public int GetTotCount() {
+		int c = 0;
+		PreparedStatement ps=null;
+	    String query="SELECT COUNT(*) AS rowcount FROM "+table+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	c = rs.getInt("rowcount");
+	        	
+	        	rs.close();
+	            return c;
+	            
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return c;
 	}
     
 }

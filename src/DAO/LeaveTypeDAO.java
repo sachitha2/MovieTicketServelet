@@ -5,16 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LeaveDAO {
+public class LeaveTypeDAO {
 	Connection connection=null;
-	public String table = "e_leave";
+	public String table = "leavetype";
     
 
-	public LeaveDAO(Connection connection) {
+	public LeaveTypeDAO(Connection connection) {
 		this.connection = connection;
 	}
 	
-	public ResultSet  EmployeeList() {
+	public ResultSet  leaveList() {
 		PreparedStatement ps=null;
 	    String query="SELECT * FROM "+table+";";
 	    try {
