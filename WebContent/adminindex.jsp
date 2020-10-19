@@ -45,7 +45,7 @@
                 
                 <%
 				try {
-			    	ResultSet rs = DAO.EmployeeList();
+			    	ResultSet rs = DAO.PendingLeaves();
 			    	
 					while(rs.next()) {
 						%>
@@ -55,7 +55,7 @@
 		                  <td>//TODO name here</td>
 		                  
 		                  <td><% out.print(rs.getString("leaveType")); %></td>
-		                  <td><a href=""><button class="accept-btn">Accept</button></a><a href="#1"><button class="accept-btn">Reject</button></a></td>
+		                  <td><a href="AcceptReject?id=<% out.print(rs.getString("id")); %>&s=1"><button class="accept-btn">Accept</button></a><a href="AcceptReject?id=<% out.print(rs.getString("id")); %>&s=2"><button class="accept-btn">Reject</button></a></td>
 		                </tr>
 						<%
 					}

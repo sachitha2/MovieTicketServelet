@@ -30,7 +30,21 @@ public class LeaveDAO {
 	    }
 		return null;
 	}
-	
+
+	public ResultSet  PendingLeaves() {
+		PreparedStatement ps=null;
+	    String query="SELECT * FROM "+table+" WHERE status = 0;";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        
+	            return rs;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return null;
+	}
 	
 	public int GetTotCount() {
 		int c = 0;
@@ -83,6 +97,23 @@ public class LeaveDAO {
 		return false;
 		
 	}
+	
+	public boolean AcceptReject(String id,String s) {
+		PreparedStatement ps=null;
+	    String query="UPDATE e_leave SET status = '"+s+"' WHERE e_leave.id = "+id+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
+		return false;
+	}
+	
 		//TODO EDIT
 		//TODO Take a data from passing id
 }
