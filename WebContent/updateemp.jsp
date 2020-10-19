@@ -27,9 +27,9 @@
 			    	
 					rs.next();
 					%>
-        <form action="" method="post">
+        <form action="UpdateEmp" method="post">
             <label for="empid" class="label">Employee ID</label>
-            <input type="text" name="id" id="empid" value="<% out.print(rs.getString("id")); %>" disabled><br>
+            <input type="text" name="id" id="empid" value="<% out.print(rs.getString("id")); %>" readonly><br>
             <label for="name" class="label">Name</label>
             <input type="text" name="name"  value="<% out.print(rs.getString("name")); %>"  required><br>
             <label for="dob" class="label">BirthDay</label>

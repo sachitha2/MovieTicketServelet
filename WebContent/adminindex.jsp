@@ -1,3 +1,13 @@
+<%@page import="DAO.LeaveDAO"%>
+<%@ page import="DAO.EmployeeDAO"%>
+<%@ page import="Employee.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  LeaveDAO DAO =new  LeaveDAO(connection);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,30 +42,29 @@
                   <th>Leave Type</th>
                   <th>Accept/Reject</th>
                 </tr>
-                <tr>
-                  <td>001</td>
-                  <td>Griffin</td>
-                  <td>Casual</td>
-                  <td><a href=""><button class="accept-btn">Accept</button></a><a href="#1"><button class="accept-btn">Reject</button></a></td>
-                </tr>
-                <tr>
-                  <td>Lois</td>
-                  <td>Griffin</td>
-                  <td>$150</td>
-                  <td><button class="accept-btn">Accept</button><button class="accept-btn">Reject</button></td>
-                </tr>
-                <tr>
-                  <td>Joe</td>
-                  <td>Swanson</td>
-                  <td>$300</td>
-                  <td><button class="accept-btn">Accept</button><button class="accept-btn">Reject</button></td>
-                </tr>
-                <tr>
-                  <td>Cleveland</td>
-                  <td>Brown</td>
-                  <td>$250</td>
-                  <td><button class="accept-btn">Accept</button><button class="accept-btn">Reject</button></td>
-                </tr>
+                
+                <%
+				try {
+			    	ResultSet rs = DAO.EmployeeList();
+			    	
+					while(rs.next()) {
+						%>
+						<tr>
+		                  <td><% out.print(rs.getString("id")); %></td>
+		                  
+		                  <td>//TODO name here</td>
+		                  
+		                  <td><% out.print(rs.getString("leaveType")); %></td>
+		                  <td><a href=""><button class="accept-btn">Accept</button></a><a href="#1"><button class="accept-btn">Reject</button></a></td>
+		                </tr>
+						<%
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			%>
+                
               </table>
         </div>
         <div class="buttoncontainer">

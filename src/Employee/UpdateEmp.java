@@ -13,9 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.EmployeeDAO;
 import Model.EmployeeModel;
 
-
-@WebServlet("/AddEmp")
-public class AddEmp extends HttpServlet {
+@WebServlet("/UpdateEmp")
+public class UpdateEmp extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -24,7 +23,6 @@ public class AddEmp extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		DB obj_DB_Connection=new DB();
 		Connection connection=null;
 	    connection=obj_DB_Connection.get_connection();
@@ -32,16 +30,19 @@ public class AddEmp extends HttpServlet {
 	    EmployeeDAO empDAO = new EmployeeDAO(connection);
 		
 		PrintWriter out = response.getWriter();
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		if(request.getParameter("addemp").equals("Submit")) {
 			
-			EmployeeModel empModel = new EmployeeModel(0,request.getParameter("name"),request.getParameter("dob"),request.getParameter("address"),request.getParameter("mobile"),request.getParameter("email"),request.getParameter("nic"),request.getParameter("username"),request.getParameter("pass"));
 			
 			
-			empDAO.addData(empModel);
-			response.sendRedirect("addemp.jsp?msg=done");
+			EmployeeModel empModel = new EmployeeModel(id,request.getParameter("name"),request.getParameter("dob"),request.getParameter("address"),request.getParameter("mobile"),request.getParameter("email"),request.getParameter("nic"),request.getParameter("username"),request.getParameter("pass"));
+			
+			
+			empDAO.updateData(empModel);
+			response.sendRedirect("updateemp.jsp?msg=done&id="+id);
 		}else {
-			response.sendRedirect("addemp.jsp?msg=failed");
+			response.sendRedirect("updateemp.jsp?msg=failed&id="+id);
 		}
 		doGet(request, response);
 	}
