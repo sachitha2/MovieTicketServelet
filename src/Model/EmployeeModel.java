@@ -6,7 +6,7 @@ public class EmployeeModel {
 	String dob;
 	String address;
 	String mobile;
-	String 	email;
+	String email;
 	String nic;
 	String username;
 	String pass;
