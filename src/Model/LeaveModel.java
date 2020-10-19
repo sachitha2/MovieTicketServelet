@@ -7,7 +7,8 @@ public class LeaveModel {
 	String eDate;
 	String reason;
 	int status;
-	public LeaveModel(int id, String leaveType, String sDate, String eDate, String reason, int status) {
+	String empId;
+	public LeaveModel(int id, String leaveType, String sDate, String eDate, String reason, int status,String empId) {
 		super();
 		this.id = id;
 		this.leaveType = leaveType;
@@ -15,6 +16,7 @@ public class LeaveModel {
 		this.eDate = eDate;
 		this.reason = reason;
 		this.status = status;
+		this.empId = empId;
 	}
 	public int getId() {
 		return id;
