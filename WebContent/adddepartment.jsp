@@ -16,8 +16,13 @@
             <input type="text" name="id" id="depid"><br>
             <label for="depname" class="label1">Depatment Name</label>
             <input type="text" name="name" id="depname" required><br>
-            <!-- <label for="nemp" class="label1">No. of Employees</label>
-            <input type="number" value="" name="nemp" id="nemp" step="1" min="1" required><br> -->
+            <p style="text-align:center;font-size:20px;color:red">
+                <%
+                if(request.getParameter("msg")!=null){
+                out.print(request.getParameter("msg"));
+                }
+                %>
+                </p>
             <input class="accept-btn" type="submit" name="" style="margin-right:150px ;"> 
             <a href="adminindex.jsp"><input type="button" value="Cancel" class="accept-btn" ></a>
             
