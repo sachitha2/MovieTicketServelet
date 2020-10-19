@@ -17,9 +17,10 @@
             <label for="num" class="label">Max Leaves </label>
             <input type="number" name="" id="num" required><br>
             <br><br>
-            <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"> <input type="reset" class="accept-btn">
-            
+            <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"> 
         </form>
+        <br> <br>
+        <a href="adminindex.jsp" ><button class="accept-btn" style="width:200px;height:30px;">Cancel</button></a>
        </div>
     </div>
 </body>
