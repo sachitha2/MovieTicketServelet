@@ -72,9 +72,9 @@ public class LoginDAO {
 		
 		return false;
 	}
-	public boolean del(String id) {
+	public boolean del(String name) {
 		PreparedStatement ps=null;
-	    String query="DELETE FROM user WHERE user.id = "+id+";";
+	    String query="DELETE FROM user WHERE user.username = "+name+";";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ps.executeUpdate();
