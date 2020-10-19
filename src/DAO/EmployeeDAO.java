@@ -73,7 +73,21 @@ public class EmployeeDAO {
 		
 		return false;
 	}
-		//TODO DELETE
+	public boolean del(String id) {
+		PreparedStatement ps=null;
+	    String query="DELETE FROM employee WHERE employee.id = "+id+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return false;
+		
+	}
 		//TODO EDIT
 		//TODO Take a data from passing id
 	
