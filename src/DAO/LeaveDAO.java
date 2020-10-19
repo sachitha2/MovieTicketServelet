@@ -69,7 +69,7 @@ public class LeaveDAO {
 	
 	public boolean addData(LeaveModel levModel) {
 		PreparedStatement ps=null;
-	    String query="INSERT INTO e_leave (id, leaveType, sDate, eDate, reason, status) VALUES (NULL, '"+levModel.getLeaveType()+"', '"+levModel.getsDate()+"', '"+levModel.geteDate()+"', '"+levModel.getReason()+"', '"+levModel.getStatus()+"');";
+	    String query="INSERT INTO e_leave (id, leaveType, sDate, eDate, reason, status,empId) VALUES (NULL, '"+levModel.getLeaveType()+"', '"+levModel.getsDate()+"', '"+levModel.geteDate()+"', '"+levModel.getReason()+"', '"+levModel.getStatus()+"','"+levModel.getEmpId()+"');";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ps.executeUpdate();
