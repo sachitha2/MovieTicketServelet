@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.LoginDAO;
-import Model.UserModel;
+import DAO.LeaveTypeDAO;
+import Model.LeavetypeModel;
 
-@WebServlet("/AddUser")
-public class AddUser extends HttpServlet {
+
+@WebServlet("/AddLeaveType")
+public class AddLeaveType extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -29,23 +30,24 @@ public class AddUser extends HttpServlet {
 		Connection connection=null;
 	    connection=obj_DB_Connection.get_connection();
 		
-		
 		PrintWriter out = response.getWriter();
 		
-		
-		if((request.getParameter("username") != null) &&  (request.getParameter("password") != null)  &&  (request.getParameter("type") != null)) {
+		if((request.getParameter("type") != null) && (request.getParameter("maxLeave") != null)) {
 			
-			out.println("<h1>Add user</h1>");
-			
-			LoginDAO loginDAO =new  LoginDAO(connection);
+			//leavetypeDAO
+		    LeaveTypeDAO levTyDAO = new LeaveTypeDAO(connection);
 		    
-		    UserModel uModel = new UserModel(request.getParameter("username") ,request.getParameter("password"),1);
-		    out.println("<br>");
-		    out.println(loginDAO.addData(uModel));
-			out.println("parameters ok");
+		    int maxLeaves = Integer.parseInt(request.getParameter("maxLeave"));
+		    
+		    LeavetypeModel levTyModel = new LeavetypeModel(0,request.getParameter("type"),maxLeaves);
+		    
+		    levTyDAO.addData(levTyModel);
+		    response.sendRedirect("addleavetype.jsp?msg=done");
 		}else {
-			out.println("parameters wrong");
+			response.sendRedirect("addleavetype.jsp?msg=failed");
 		}
+		
+		
 		doGet(request, response);
 	}
 

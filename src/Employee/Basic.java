@@ -40,16 +40,7 @@ public class Basic extends HttpServlet {
 	    
 	    out.println("<h1>"+empDAO.GetTotCount()+"</h1>");
 	    
-	    try {
-	    	ResultSet rs = loginDAO.userList();
-			while(rs.next()) {
-				out.println("<br>");
-				out.print(rs.getString("username"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block	
-			e.printStackTrace();
-		}
+	    
 	    
 	    
 	    
@@ -77,16 +68,10 @@ public class Basic extends HttpServlet {
 	    out.println(levDAO.addData(levModel));
 	    
 	    
-	    //leavetypeDAO
-	    out.println("<h1>Add leave type</h1>");
-	    LeaveTypeDAO levTyDAO = new LeaveTypeDAO(connection);
-	    
-	    LeavetypeModel levTyModel = new LeavetypeModel(0,"type",100);
-	    out.println("<br>");
-	    out.println(levTyDAO.addData(levTyModel));
 	    
 	    
-	  //userDAO
+	    
+	 
 	    
 
 	}

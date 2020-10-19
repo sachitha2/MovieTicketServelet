@@ -11,11 +11,11 @@
     <div class="content">
        <h2>Add Leave Type</h2>
        <div class="mini-container" style="height: 450px;">
-        <form action="" method="post">
+        <form action="AddLeaveType" method="post">
             <label for="ltype" class="label">Leave Type</label>
-            <input type="text" name="" id="ltype" required><br>
+            <input type="text" name="type" id="ltype" required><br>
             <label for="num" class="label">Max Leaves </label>
-            <input type="number" name="" id="num" required><br>
+            <input type="number" name="maxLeave" id="num" required><br>
             <br><br>
             <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"> 
         </form>
