@@ -50,5 +50,11 @@ public class LoginDAO {
 	    }
 		return c;
 	}
+	
+	
+		//TODO ADD
+		//TODO DELETE
+		//TODO EDIT
+		//TODO Take a data from passing id
     
 }
