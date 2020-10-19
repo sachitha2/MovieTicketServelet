@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.LoginDAO;
+import Model.UserModel;
+
 @WebServlet("/AddUser")
 public class AddUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
 	}
 
 	/**
@@ -31,9 +34,18 @@ public class AddUser extends HttpServlet {
 		
 		
 		if((request.getParameter("username") != null) &&  (request.getParameter("password") != null)  &&  (request.getParameter("type") != null)) {
+			
+			out.println("<h1>Add user</h1>");
+			
+			LoginDAO loginDAO =new  LoginDAO(connection);
+		    
+		    UserModel uModel = new UserModel(request.getParameter("username") ,request.getParameter("password"),1);
+		    out.println("<br>");
+		    out.println(loginDAO.addData(uModel));
 			out.println("parameters ok");
 		}else {
 			out.println("parameters wrong");
+			out.println(request.getParameter("username"));
 		}
 		doGet(request, response);
 	}

@@ -34,7 +34,7 @@ public class Basic extends HttpServlet {
 	    connection=obj_DB_Connection.get_connection();
         
 	    
-	    LoginDAO loginDAO =new  LoginDAO(connection);
+	    
 	    
 	    EmployeeDAO empDAO = new EmployeeDAO(connection);
 	    
@@ -87,11 +87,7 @@ public class Basic extends HttpServlet {
 	    
 	    
 	  //userDAO
-	    out.println("<h1>Add user</h1>");
 	    
-	    UserModel uModel = new UserModel("type","type",1);
-	    out.println("<br>");
-	    out.println(loginDAO.addData(uModel));
 
 	}
 }
