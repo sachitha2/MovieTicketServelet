@@ -21,6 +21,8 @@ public class EmployeeDAO {
 		this.connection = connection;
 	}
 	
+	
+
 	public ResultSet  EmployeeList() {
 		PreparedStatement ps=null;
 	    String query="SELECT * FROM "+table+";";
@@ -41,6 +43,28 @@ public class EmployeeDAO {
 		int c = 0;
 		PreparedStatement ps=null;
 	    String query="SELECT COUNT(*) AS rowcount FROM "+table+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	c = rs.getInt("rowcount");
+	        	
+	        	rs.close();
+	            return c;
+	            
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return c;
+	}
+	
+	
+	public int checkLogin(String uname,String pass) {
+		int c = 0;
+		PreparedStatement ps=null;
+	    String query="SELECT COUNT(*) AS rowcount FROM employee WHERE username LIKE '"+uname+"' AND pass LIKE '"+pass+"'";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ResultSet rs=ps.executeQuery();

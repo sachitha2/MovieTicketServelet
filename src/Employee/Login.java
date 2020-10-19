@@ -8,14 +8,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.jdi.connect.spi.Connection;
+
+import DAO.EmployeeDAO;
+import DAO.LeaveDAO;
+
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		DB obj_DB_Connection=new DB();
+		java.sql.Connection connection=null;
+	    connection=obj_DB_Connection.get_connection();
+	    
+	    EmployeeDAO emp = new EmployeeDAO(connection);
+		
 		String uname = request.getParameter("uname");
 		String pass = request.getParameter("pass");
 		
-		if(uname.equals("sam") && pass.equals("sam")) {
+		
+		
+		
+		
+		if(emp.checkLogin(uname, pass) == 1) {
 			//create a session
 			HttpSession session =  request.getSession();
 			session.setAttribute("uname", uname);
