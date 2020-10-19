@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.DepartmentDAO;
 import DAO.EmployeeDAO;
+import DAO.LeaveDAO;
 import DAO.LoginDAO;
 import Model.DepartmentModel;
 import Model.EmployeeModel;
+import Model.LeaveModel;
 
 public class Basic extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,22 +44,32 @@ public class Basic extends HttpServlet {
 				out.print(rs.getString("username"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block	
 			e.printStackTrace();
 		}
 	    
 	    
+	    
+	    //adddepartment
 	    DepartmentDAO depDAO = new DepartmentDAO(connection);
 	    
 	    DepartmentModel dep = new DepartmentModel(0,"sachitha department");
 	    out.println("<br>");
 	    out.println(depDAO.addData(dep));
 	    
-	    
+	    //add emp
 	    EmployeeModel empModel = new EmployeeModel(0,"name","2020-10-10","address","mobile","email","nic","uname","pass");
 	    out.println("<br>");
 	    out.println(empDAO.addData(empModel));
 	    
+	    
+	    //leaveDAO
+	    
+	    LeaveDAO levDAO = new LeaveDAO(connection);
+	    
+	    LeaveModel levModel = new LeaveModel(0,"1","2020-10-25","2020-10-11","reason",1);
+	    	    
+	    out.println(levDAO.addData(levModel));
 
 	}
 }

@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Model.EmployeeModel;
+import Model.LeaveModel;
+
 public class LoginDAO {
 	Connection connection=null;
 	public String table = "user";
