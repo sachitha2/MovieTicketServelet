@@ -17,6 +17,13 @@
             <label for="num" class="label">Max Leaves </label>
             <input type="number" name="maxLeave" id="num" required><br>
             <br><br>
+            			<p style="text-align:center;font-size:20px;color:red">
+						<%
+							if(request.getParameter("msg")!=null){
+								out.print(request.getParameter("msg"));
+							}
+						%>
+						</p>
             <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"> 
         </form>
         <br> <br>
