@@ -11,7 +11,7 @@
     <div class="content">
        <h2>Apply for Leave</h2>
        <div class="mini-container" style="height: 450px;">
-        <form action="" method="post">
+        <form action="AddLeave" method="post">
             <label for="empid" class="label">Employee ID</label>
             <input type="text" name="id" id="empid" disabled><br>
             <label for="leavetype" class="label">Leave Type</label>
@@ -37,7 +37,7 @@
                 }
                 %>
                 </p>
-            <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"><input type="reset" class="accept-btn">
+            <input class="accept-btn" type="submit" name="addLe"  style="margin-right:150px ;"><input type="reset" class="accept-btn">
             
         </form>
        </div>
