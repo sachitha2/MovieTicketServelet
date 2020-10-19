@@ -37,13 +37,6 @@ public class Basic extends HttpServlet {
 	    
 	    
 	    
-	    
-	    out.println("<h1>"+empDAO.GetTotCount()+"</h1>");
-	    
-	    
-	    
-	    
-	    
 	    //adddepartment
 	    out.println("<h1>Add Department</h1>");
 	    DepartmentDAO depDAO = new DepartmentDAO(connection);
