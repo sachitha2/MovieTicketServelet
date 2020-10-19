@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.EmployeeDAO;
 import DAO.LoginDAO;
 
 public class Basic extends HttpServlet {
@@ -26,6 +27,10 @@ public class Basic extends HttpServlet {
         
 	    
 	    LoginDAO loginDAO =new  LoginDAO(connection);
+	    
+	    EmployeeDAO empDAO = new EmployeeDAO(connection);
+	    
+	    out.println("<h1>"+empDAO.GetTotCount()+"</h1>");
 	    
 	    try {
 	    	ResultSet rs = loginDAO.userList();
