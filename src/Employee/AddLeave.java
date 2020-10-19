@@ -36,7 +36,7 @@ public class AddLeave extends HttpServlet {
 			
 		    LeaveDAO DAO = new LeaveDAO(connection);
 		    
-		    LeaveModel lev = new LeaveModel(0,request.getParameter("leavetype"),request.getParameter("sDate"),request.getParameter("eDate"),request.getParameter("reason"),0);
+		    LeaveModel lev = new LeaveModel(0,request.getParameter("leavetype"),request.getParameter("sDate"),request.getParameter("eDate"),request.getParameter("reason"),0,"user id here");
 		    DAO.addData(lev);
 			
 			
