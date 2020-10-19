@@ -31,6 +31,13 @@
             <label for="pwd" class="label">Password</label>
             <input type="password" name="pass" id="pwd" required><br>
             <br><br>
+            <p style="text-align:center;font-size:20px;color:red">
+                <%
+                if(request.getParameter("msg")!=null){
+                out.print(request.getParameter("msg"));
+                }
+                %>
+                </p>
             <input class="accept-btn" type="submit" name="addemp"  style="margin-right:150px ;"> <input type="reset" class="accept-btn">
             
         </form>

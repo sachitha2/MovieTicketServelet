@@ -30,6 +30,13 @@
             <label for="reason" class="label">Reason</label>
             <input type="text" name="reason" id="reason" style="height: 80px;" required><br>
             <br><br>
+            <p style="text-align:center;font-size:20px;color:red">
+                <%
+                if(request.getParameter("msg")!=null){
+                out.print(request.getParameter("msg"));
+                }
+                %>
+                </p>
             <input class="accept-btn" type="submit" name="" id="" style="margin-right:150px ;"><input type="reset" class="accept-btn">
             
         </form>
