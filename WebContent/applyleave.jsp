@@ -22,7 +22,7 @@
                 <option value="wfh">Work from Home</option>
             </select> <br>
             <label for="sDate" class="label">Start Date</label>
-            <input type="date" name="" id="sdate" required><br>
+            <input type="date" name="sDate" id="sdate" required><br>
             <label for="days" class="label" >No. of Days</label>
             <input type="number" value="1" name="" onchange="calcenddate()" id="days" style="margin-right: 30px;" required>  (10 remaining)<br>
             <label for="edate" class="label">End Date</label>
