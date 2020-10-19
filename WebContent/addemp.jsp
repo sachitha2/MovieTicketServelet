@@ -1,3 +1,4 @@
+<%@ page import = "java.io.*,java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +12,7 @@
     <div class="content">
        <h2>Add New Employee</h2>    
        <div class="mini-container" style="height: auto;margin-bottom: 30px;">
-        <form action="" method="get">
+        <form action="AddEmp" method="post">
             <label for="empid" class="label">Employee ID</label>
             <input type="text" name="id" id="empid" disabled><br>
             <label for="name" class="label">Name</label>

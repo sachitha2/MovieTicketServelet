@@ -1,40 +1,48 @@
 package Employee;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AddEmp
- */
+import DAO.EmployeeDAO;
+import Model.EmployeeModel;
+
+
 @WebServlet("/AddEmp")
 public class AddEmp extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddEmp() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		
+		DB obj_DB_Connection=new DB();
+		Connection connection=null;
+	    connection=obj_DB_Connection.get_connection();
+	    
+	    EmployeeDAO empDAO = new EmployeeDAO(connection);
+		
+		PrintWriter out = response.getWriter();
+		
+		if(request.getParameter("addemp").equals("Submit")) {
+			
+			EmployeeModel empModel = new EmployeeModel(0,"name","2020-10-10","address","mobile","email","nic","uname","pass");
+			
+			
+			empDAO.addData(empModel);
+			response.sendRedirect("addemp.jsp?msg=done");
+		}else {
+			response.sendRedirect("addemp.jsp?msg=failed");
+		}
 		doGet(request, response);
 	}
 

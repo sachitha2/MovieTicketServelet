@@ -36,7 +36,7 @@ public class Basic extends HttpServlet {
 	    
 	    
 	    
-	    EmployeeDAO empDAO = new EmployeeDAO(connection);
+	    
 	    
 	    out.println("<h1>"+empDAO.GetTotCount()+"</h1>");
 	    
@@ -52,11 +52,7 @@ public class Basic extends HttpServlet {
 	    out.println("<br>");
 	    out.println(depDAO.addData(dep));
 	    
-	    //add emp
-	    out.println("<h1>Add emp</h1>");
-	    EmployeeModel empModel = new EmployeeModel(0,"name","2020-10-10","address","mobile","email","nic","uname","pass");
-	    out.println("<br>");
-	    out.println(empDAO.addData(empModel));
+	    
 	    
 	    
 	    //leaveDAO
