@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Model.DepartmentModel;
+import Model.EmployeeModel;
+
 
 
 
@@ -55,7 +58,21 @@ public class EmployeeDAO {
 		return c;
 	}
 	
-		//TODO ADD
+	public boolean addData(EmployeeModel empModel) {
+		PreparedStatement ps=null;
+	    String query="INSERT INTO employee (id, name, dob, address, mobile, email, nic, username, pass) VALUES (NULL, '"+empModel.getName()+"', '"+empModel.getDob()+"', '"+empModel.getAddress()+"', '"+empModel.getMobile()+"', '"+empModel.getEmail()+"', '"+empModel.getNic()+"', '"+empModel.getUsername()+"', '"+empModel.getPass()+"');";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
+		return false;
+	}
 		//TODO DELETE
 		//TODO EDIT
 		//TODO Take a data from passing id

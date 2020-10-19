@@ -16,6 +16,7 @@ import DAO.DepartmentDAO;
 import DAO.EmployeeDAO;
 import DAO.LoginDAO;
 import Model.DepartmentModel;
+import Model.EmployeeModel;
 
 public class Basic extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -51,6 +52,11 @@ public class Basic extends HttpServlet {
 	    DepartmentModel dep = new DepartmentModel(0,"sachitha department");
 	    out.println("<br>");
 	    out.println(depDAO.addData(dep));
+	    
+	    
+	    EmployeeModel empModel = new EmployeeModel(0,"name","2020-10-10","address","mobile","email","nic","uname","pass");
+	    out.println("<br>");
+	    out.println(empDAO.addData(empModel));
 	    
 
 	}
