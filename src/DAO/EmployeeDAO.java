@@ -103,6 +103,27 @@ public class EmployeeDAO {
 		return c;
 	}
 	
+	public String getEmpName(String empId) {
+		String c = "";
+		PreparedStatement ps=null;
+	    String query="SELECT name FROM employee WHERE id = "+empId;
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	c = rs.getString("name");
+	        	
+	        	rs.close();
+	            return c;
+	            
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return c;
+	}
+	
 	public boolean addData(EmployeeModel empModel) {
 		PreparedStatement ps=null;
 	    String query="INSERT INTO employee (id, name, dob, address, mobile, email, nic, username, pass) VALUES (NULL, '"+empModel.getName()+"', '"+empModel.getDob()+"', '"+empModel.getAddress()+"', '"+empModel.getMobile()+"', '"+empModel.getEmail()+"', '"+empModel.getNic()+"', '"+empModel.getUsername()+"', '"+empModel.getPass()+"');";
