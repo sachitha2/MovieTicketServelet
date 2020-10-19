@@ -13,9 +13,9 @@
        <div class="mini-container">
         <form action="" method="post">
             <label for="depid" class="label1">Department ID</label>
-            <input type="text" name="depid" id="depid"><br>
+            <input type="text" name="id" id="depid"><br>
             <label for="depname" class="label1">Depatment Name</label>
-            <input type="text" name="depname" id="depname" required><br>
+            <input type="text" name="name" id="depname" required><br>
             <!-- <label for="nemp" class="label1">No. of Employees</label>
             <input type="number" value="" name="nemp" id="nemp" step="1" min="1" required><br> -->
             <input class="accept-btn" type="submit" name="" style="margin-right:150px ;"> 
