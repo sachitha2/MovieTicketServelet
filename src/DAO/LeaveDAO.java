@@ -1,11 +1,11 @@
-package DAO;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Model.LeaveModel;
+import model.LeaveModel;
 
 public class LeaveDAO {
 	Connection connection=null;

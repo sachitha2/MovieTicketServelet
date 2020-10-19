@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.EmployeeDAO;
-import Model.EmployeeModel;
+import dao.EmployeeDAO;
+import model.EmployeeModel;
 
 @WebServlet("/UpdateEmp")
 public class UpdateEmp extends HttpServlet {

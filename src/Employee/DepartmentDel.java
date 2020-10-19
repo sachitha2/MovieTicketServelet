@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.DepartmentDAO;
+import dao.DepartmentDAO;
 
 @WebServlet("/DepartmentDel")
 public class DepartmentDel extends HttpServlet {
