@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.DepartmentDAO;
-import DAO.EmployeeDAO;
-import DAO.LeaveDAO;
-import DAO.LeaveTypeDAO;
-import DAO.LoginDAO;
-import Model.DepartmentModel;
-import Model.EmployeeModel;
-import Model.LeaveModel;
-import Model.LeavetypeModel;
-import Model.UserModel;
+import dao.DepartmentDAO;
+import dao.EmployeeDAO;
+import dao.LeaveDAO;
+import dao.LeaveTypeDAO;
+import dao.LoginDAO;
+import model.DepartmentModel;
+import model.EmployeeModel;
+import model.LeaveModel;
+import model.LeavetypeModel;
+import model.UserModel;
 
 public class Basic extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)

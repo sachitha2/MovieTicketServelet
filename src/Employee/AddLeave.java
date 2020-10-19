@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.DepartmentDAO;
-import DAO.LeaveDAO;
-import Model.DepartmentModel;
-import Model.LeaveModel;
+import dao.DepartmentDAO;
+import dao.LeaveDAO;
+import model.DepartmentModel;
+import model.LeaveModel;
 
 @WebServlet("/AddLeave")
 public class AddLeave extends HttpServlet {

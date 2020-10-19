@@ -1,5 +1,5 @@
-<%@ page import="DAO.*"%>
-<%@ page import="Employee.DB"%>
+<%@ page import="dao.*"%>
+<%@ page import="employee.DB"%>
 <%@ page import="java.sql.*"%>
 <%  DB obj_DB_Connection=new DB();
   Connection connection=null;
@@ -39,7 +39,17 @@
 		                  <td><% out.print(rs.getString("sDate")); %></td>
 		                  <td><% out.print(rs.getString("eDate")); %></td>
 		                  <td><% out.print(rs.getString("reason")); %></td>
-		                  <td><% out.print(rs.getString("status")); %></td>
+		                  <td><% 
+		                  
+		                  	if(rs.getString("status").equals("0")){
+		                  		out.print("Pending");
+		                  	}else if(rs.getString("status").equals("1")){
+		                  		out.print("Accepted");
+		                  	}else{
+		                  		out.print("Rejected");
+		                  	}
+		                  
+		                  	 %></td>
 		                </tr>
 						<%
 						//
