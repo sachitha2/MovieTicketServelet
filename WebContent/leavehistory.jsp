@@ -1,5 +1,5 @@
-<%@ page import="dao.*"%>
-<%@ page import="employee.DB"%>
+<%@ page import="DAO.*"%>
+<%@ page import="Employee.DB"%>
 <%@ page import="java.sql.*"%>
 <%  DB obj_DB_Connection=new DB();
   Connection connection=null;

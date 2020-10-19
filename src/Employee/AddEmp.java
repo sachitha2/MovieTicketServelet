@@ -1,4 +1,4 @@
-package employee;
+package Employee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.EmployeeDAO;
-import model.EmployeeModel;
+import DAO.EmployeeDAO;
+import Model.EmployeeModel;
 
 
 @WebServlet("/AddEmp")

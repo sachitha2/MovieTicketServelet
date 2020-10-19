@@ -1,4 +1,4 @@
-package employee;
+package Employee;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.sun.jdi.connect.spi.Connection;
 
-import dao.EmployeeDAO;
-import dao.LeaveDAO;
+import DAO.EmployeeDAO;
+import DAO.LeaveDAO;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {

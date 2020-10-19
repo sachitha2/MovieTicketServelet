@@ -1,14 +1,14 @@
-package dao;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.EmployeeModel;
-import model.LeaveModel;
-import model.LeavetypeModel;
-import model.UserModel;
+import Model.EmployeeModel;
+import Model.LeaveModel;
+import Model.LeavetypeModel;
+import Model.UserModel;
 
 public class LoginDAO {
 	Connection connection=null;
