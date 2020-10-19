@@ -46,7 +46,7 @@ public class Basic extends HttpServlet {
 	    out.println("<h1>Add leave</h1>");
 	    LeaveDAO levDAO = new LeaveDAO(connection);
 	    
-	    LeaveModel levModel = new LeaveModel(0,"1","2020-10-25","2020-10-11","reason",1);
+	    LeaveModel levModel = new LeaveModel(0,"1","2020-10-25","2020-10-11","reason",1,"user id");
 	    out.println("<br>"); 
 	    out.println(levDAO.addData(levModel));
 	    

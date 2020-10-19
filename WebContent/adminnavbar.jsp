@@ -1,3 +1,13 @@
+<%
+	
+	String uname=(String)session.getAttribute("uname"); 
+
+
+	if(uname == null){
+		response.sendRedirect("index.jsp");
+	}
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +19,7 @@
     <div class="sidenav">
         <div><img  class="logo" src="logo.png" alt="" ></div>
         <div><img  class="profile" src="profile.png" alt="" ><span style="color: aliceblue;font-size: 18px;top:6%;position: absolute;margin-top: 80px;">
-            Admin Name</span></div>
+            <% out.print(uname); %></span></div>
         <!-- <div class="topic">General</div> -->
         <a href="adminindex.jsp">Dashboard</a>
         

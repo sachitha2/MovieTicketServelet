@@ -20,7 +20,15 @@
     <div class="content" style="margin-top: 80px;">
         <h2>My Leave History</h2>
         <div class="maincontainer">
-            <table>            
+            <table>     
+            
+            	<tr>
+            		<th>Start Date</th>
+            		<th>End Date</th>
+            		<th>Reason</th>
+            		<th>Status</th>
+            		
+            	</tr>       
                 <%
 				try {
 			    	ResultSet rs = leaveDAO.EmployeeList();
