@@ -30,7 +30,14 @@
             <input type="text" name="username" id="uname" required ><br>
             <label for="pwd" class="label">Password</label>
             <input type="password" name="pass" id="pwd" required><br>
-            <br><br>
+            <br>
+            			<p style="text-align:center;font-size:20px;color:red">
+						<%
+							if(request.getParameter("msg")!=null){
+								out.print(request.getParameter("msg"));
+							}
+						%>
+						</p>
             <input class="accept-btn" type="submit" name="addemp"  style="margin-right:150px ;"> <a href="adminindex.jsp"><input type="button" value="Cancel" class="accept-btn" ></a>
             
         </form>
