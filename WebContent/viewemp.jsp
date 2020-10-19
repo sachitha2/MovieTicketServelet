@@ -55,7 +55,7 @@
             <label for="pwd" class="label">Password</label>
             <input type="password" name="pwd" id="pwd"  value="<% out.print(rs.getString("pass")); %>" disabled><br>
             <br><br>
-            <a href="updateemp.jsp"><button class="accept-btn" style="width: 150px;height: 40px;">Update details</button></a>
+            <a href="updateemp.jsp?id=<% out.print(request.getParameter("id")); %>"><button class="accept-btn" style="width: 150px;height: 40px;">Update details</button></a>
             <a href=""><button class="accept-btn" style="width: 150px;height: 40px;">Delete </button></a>
             <a href=""><button class="accept-btn" style="width: 150px;height: 40px;">Cancel</button></a>
             <%
