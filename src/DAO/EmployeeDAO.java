@@ -88,7 +88,25 @@ public class EmployeeDAO {
 		return false;
 		
 	}
-		//TODO EDIT
-		//TODO Take a data from passing id
+		
+		
+	public ResultSet  getAEmp(String id) {
+		PreparedStatement ps=null;
+	    String query="SELECT * FROM "+table+" WHERE id = "+id+" ;";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        
+	            return rs;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return null;
+	}
+	
+	
+	//TODO EDIT
+	
 	
 }
