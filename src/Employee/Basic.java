@@ -37,13 +37,7 @@ public class Basic extends HttpServlet {
 	    
 	    
 	    
-	    //adddepartment
-	    out.println("<h1>Add Department</h1>");
-	    DepartmentDAO depDAO = new DepartmentDAO(connection);
 	    
-	    DepartmentModel dep = new DepartmentModel(0,"sachitha department");
-	    out.println("<br>");
-	    out.println(depDAO.addData(dep));
 	    
 	    
 	    
