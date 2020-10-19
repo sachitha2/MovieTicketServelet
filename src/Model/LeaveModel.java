@@ -8,6 +8,7 @@ public class LeaveModel {
 	String reason;
 	int status;
 	String empId;
+	
 	public LeaveModel(int id, String leaveType, String sDate, String eDate, String reason, int status,String empId) {
 		super();
 		this.id = id;
@@ -53,6 +54,13 @@ public class LeaveModel {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	
+	public String getEmpId() {
+		return empId;
+	}
+	public void setEmpId(String empId) {
+		this.empId = empId;
 	}
 	
 	

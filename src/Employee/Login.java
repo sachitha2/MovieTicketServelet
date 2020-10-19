@@ -32,6 +32,10 @@ public class Login extends HttpServlet {
 		
 		
 		if(emp.checkLogin(uname, pass) == 1) {
+			
+			
+			//get user id
+			
 			//create a session
 			HttpSession session =  request.getSession();
 			session.setAttribute("uname", uname);

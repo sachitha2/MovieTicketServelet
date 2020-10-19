@@ -82,6 +82,27 @@ public class EmployeeDAO {
 		return c;
 	}
 	
+	public int getUserId(String uname) {
+		int c = 0;
+		PreparedStatement ps=null;
+	    String query="SELECT id FROM employee WHERE username LIKE '"+uname+"';";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	c = rs.getInt("id");
+	        	
+	        	rs.close();
+	            return c;
+	            
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return c;
+	}
+	
 	public boolean addData(EmployeeModel empModel) {
 		PreparedStatement ps=null;
 	    String query="INSERT INTO employee (id, name, dob, address, mobile, email, nic, username, pass) VALUES (NULL, '"+empModel.getName()+"', '"+empModel.getDob()+"', '"+empModel.getAddress()+"', '"+empModel.getMobile()+"', '"+empModel.getEmail()+"', '"+empModel.getNic()+"', '"+empModel.getUsername()+"', '"+empModel.getPass()+"');";

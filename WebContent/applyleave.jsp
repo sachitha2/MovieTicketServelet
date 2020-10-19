@@ -1,3 +1,16 @@
+<%@ page import="DAO.EmployeeDAO"%>
+<%@ page import="Employee.DB"%>
+<%@ page import="java.sql.*"%>
+<%  
+	
+	DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  EmployeeDAO DAO =new  EmployeeDAO(connection);
+  String id = "";
+  String ume=session.getAttribute("uname").toString(); 
+  id = DAO.getUserId(ume)+"";
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +26,7 @@
        <div class="mini-container" style="height: 450px;">
         <form action="AddLeave" method="post">
             <label for="empid" class="label">Employee ID</label>
-            <input type="text" name="id" id="empid" disabled><br>
+            <input type="text" name="id" id="empid" readonly value="<% out.print(id); %>"><br>
             <label for="leavetype" class="label">Leave Type</label>
             <select name="leavetype" id="leaveType" place required>
                 <option value="" selected disabled>--- Select one</option>
