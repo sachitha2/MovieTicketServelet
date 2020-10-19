@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Department</title>
+        <title>Change Password</title>
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
@@ -25,4 +25,19 @@
        </div>
     </div>
 </body>
+<script>
+    var password = document.getElementById("npwd")
+    var confirm_password = document.getElementById("cnpwd");
+
+    function validatePassword(){
+    if(password.value != confirm_password.value) {
+        cnpwd.setCustomValidity("Passwords Don't Match");
+    } else {
+        cnpwd.setCustomValidity('');
+    }
+    }
+
+    npwd.onchange = validatePassword;
+    cnpwd.onkeyup = validatePassword;
+</script>
 </html>
