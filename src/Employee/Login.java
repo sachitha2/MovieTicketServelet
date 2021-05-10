@@ -19,7 +19,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		DB obj_DB_Connection=new DB();
-		java.sql.Connection connection=null;
+		java.sql.Connection connection;
 	    connection=obj_DB_Connection.get_connection();
 	    
 	    EmployeeDAO emp = new EmployeeDAO(connection);

@@ -14,7 +14,7 @@ import Model.EmployeeModel;
 public class EmployeeDAO {
 	
 	public String table = "employee";
-	Connection connection=null;
+	Connection connection;
     
 
 	public EmployeeDAO(Connection connection) {
