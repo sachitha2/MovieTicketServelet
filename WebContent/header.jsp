@@ -1,7 +1,7 @@
 <%@ page import = "java.io.*,java.util.*" %>
 <%
 
-String user=(String)session.getAttribute("user");
+String email=(String)session.getAttribute("email");
 //session.setAttribute("user", null);
 %>
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #234661;">
@@ -24,7 +24,7 @@ String user=(String)session.getAttribute("user");
                 <ul class="navbar-nav ms-auto">
                     
                     <% 
-                     if(user == null){
+                     if(email == null){
                     	 %>
                     	 	<li class="nav-item ">
 		                        <a class="nav-link btn btn-outline" href="login.jsp" tabindex="-1">Login</a>
@@ -36,7 +36,7 @@ String user=(String)session.getAttribute("user");
                      }else{
                     	 %>
                     	 <li class="nav-item ">
-                            <a class="nav-link btn btn-outline" href="#" tabindex="-1">Logout</a>
+                            <a class="nav-link btn btn-outline" href="Logout" tabindex="-1">Logout</a>
                         </li> 
                     
 	                    <li class="nav-item ">

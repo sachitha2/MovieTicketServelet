@@ -12,6 +12,7 @@ import com.sun.jdi.connect.spi.Connection;
 
 import DAO.EmployeeDAO;
 import DAO.LeaveDAO;
+import DAO.LoginDAO;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -22,26 +23,27 @@ public class Login extends HttpServlet {
 		java.sql.Connection connection;
 	    connection=obj_DB_Connection.get_connection();
 	    
-	    EmployeeDAO emp = new EmployeeDAO(connection);
+	    
+	    LoginDAO login = new LoginDAO(connection);
 		
-		String uname = request.getParameter("uname");
+		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		
 		
 		
 		
 		
-		if(emp.checkLogin(uname, pass) == 1) {
+		if(login.checkLogin(email, pass) == 1) {
 			
 			
 			//get user id
 			
 			//create a session
 			HttpSession session =  request.getSession();
-			session.setAttribute("uname", uname);
-			response.sendRedirect("adminindex.jsp");
+			session.setAttribute("email", email);
+			response.sendRedirect("index.jsp");
 		}else {
-			response.sendRedirect("index.jsp?err=e");
+			response.sendRedirect("login.jsp?err=e");
 		}
 		
 	}

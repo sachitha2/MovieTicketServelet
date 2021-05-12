@@ -56,6 +56,26 @@ public class LoginDAO {
 		return c;
 	}
 	
+	public int checkLogin(String email,String pass) {
+		int c = 0;
+		PreparedStatement ps=null;
+	    String query="SELECT COUNT(*) AS rowcount FROM user WHERE email LIKE '"+email+"' AND password LIKE '"+pass+"'";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	c = rs.getInt("rowcount");
+	        	
+	        	rs.close();
+	            return c;
+	            
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return c;
+	}
 	
 	public boolean addData(UserModel uModel) {
 		PreparedStatement ps=null;

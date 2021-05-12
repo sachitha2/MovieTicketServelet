@@ -14,7 +14,7 @@ public class DB {
         Connection connection=null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/employeems","root","");
+            connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/movieticket","root","");
         }catch (Exception e) {
             System.out.println(e);
         }

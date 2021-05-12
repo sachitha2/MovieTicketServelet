@@ -1,4 +1,4 @@
-package Employee;
+package Movie;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ public class Logout extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.removeAttribute("uname");
+		session.removeAttribute("email");
 		session.invalidate();
 		response.sendRedirect("index.jsp");
 	}
