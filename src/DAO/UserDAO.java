@@ -5,17 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Model.EmployeeModel;
-import Model.LeaveModel;
-import Model.LeavetypeModel;
 import Model.UserModel;
 
-public class LoginDAO {
+public class UserDAO {
 	Connection connection=null;
 	public String table = "user";
     
 
-	public LoginDAO(Connection connection) {
+	public UserDAO(Connection connection) {
 		this.connection = connection;
 	}
 	
@@ -109,5 +106,4 @@ public class LoginDAO {
 	}
 		//TODO EDIT
 		//TODO Take a data from passing id
-    
 }

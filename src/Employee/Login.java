@@ -13,6 +13,7 @@ import com.sun.jdi.connect.spi.Connection;
 import DAO.EmployeeDAO;
 import DAO.LeaveDAO;
 import DAO.LoginDAO;
+import DAO.UserDAO;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -24,7 +25,7 @@ public class Login extends HttpServlet {
 	    connection=obj_DB_Connection.get_connection();
 	    
 	    
-	    LoginDAO login = new LoginDAO(connection);
+	    UserDAO login = new UserDAO(connection);
 		
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
