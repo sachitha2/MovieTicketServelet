@@ -15,46 +15,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #234661;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="" height="40">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ">
-                    <li class="nav-item ">
-                        <a class="nav-link active btn btn-outline" href="#" tabindex="-1">Home</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="#" tabindex="-1">Browse</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="profile.jsp" tabindex="-1"><img
-                                src="assets/profile.png" alt="" width="30"></a>
-                    </li>
-                    <!-- 
-                        <li class="nav-item ">
-                            <a class="nav-link btn btn-outline" href="#" tabindex="-1">Logout</a>
-                        </li> 
-                    -->
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="#" tabindex="-1">Login</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="#" tabindex="-1">Sign Up</a>
-                    </li>
-                    <!-- -->
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
+<%@include file="header.jsp" %>
+    
     <div class="container">
         <h1>Profile Page</h1>
         <img src="assets/profileimg.png" class="mb-5 border border-success rounded" alt="" width="400">
@@ -77,19 +39,7 @@
                 <label for="lname" class="form-label">Mobile Number</label>
                 <input type="password" name="mobile" class="form-control" id="mobile" readonly required>
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Address</label>
-                <input type="password" name="ad1" class="form-control mb-1" id="ad1" placeholder="Address line 1"
-                    readonly required>
-                <input type="password" name="ad2" class="form-control mb-1" id="ad2" placeholder="Address line 2"
-                    readonly required>
-                <input type="password" name="city" class="form-control mb-1" id="city" placeholder="City" readonly
-                    required>
-                <input type="password" name="province" class="form-control mb-1" id="province" placeholder="Province"
-                    readonly required>
-                <input type="password" name="zip" class="form-control mb-1" id="zip" placeholder="Postal Code" readonly
-                    required>
-            </div>
+            
 
             <button type="submit" class="btn btn-primary" id="submitbtn" style="display: none;">Submit</button>
             <button type="reset" class="btn btn-secondary" id="reset" style="display: none;">Reset</button>

@@ -16,44 +16,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #234661;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href=""><img src="assets/logo.png" alt="" height="40">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ">
-                    <li class="nav-item ">
-                        <a class="nav-link active btn btn-outline" href="#" tabindex="-1">Home</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="#" tabindex="-1">Browse</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="profile.jsp" tabindex="-1"><img
-                                src="assets/profile.png" alt="" width="30"></a>
-                    </li>
-                    <!-- 
-                        <li class="nav-item ">
-                            <a class="nav-link btn btn-outline" href="#" tabindex="-1">Logout</a>
-                        </li> 
-                    -->
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="login.jsp" tabindex="-1">Login</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="register.jsp" tabindex="-1">Register</a>
-                    </li>
-                    <!-- -->
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<%@include file="header.jsp" %>
+    
 
 
     <div id="carouselExampleControls" class="carousel slide carous" data-bs-ride="carousel">
@@ -82,16 +46,19 @@
 
 
     <div class="card_container ms-auto">
+    	<h1 class=" text-center pb-4">Top Movies</h1>
         <div class="row">
+        	
             <div class="col-sm-2">
                 <div class="card">
                     <div class="card-body text-center">
                         <h5 class="card-title">The Movies</h5>
                         <p class="card-text"><img class="movie" src="assets/mov1.jpg" alt=""></p>
-                        <a href="#" class="btn btn-primary text-center">Book Now</a>
+                        <a href="movies.jsp" class="btn btn-primary text-center">Book Now</a>
                     </div>
                 </div>
             </div>
+            
             <div class="col-sm-2">
                 <div class="card">
                     <div class="card-body text-center">

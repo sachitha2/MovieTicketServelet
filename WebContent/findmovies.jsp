@@ -15,28 +15,11 @@
 </head>
 
 <body>
-	<%@include file="header.jsp" %>
-    
-    <div class="body_container ">
-        <div class="success-animation">
-            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-            </svg>
-        </div>
-        <h1 class="text-center">Booking Completed</h1>
-        <p class="h3 text-center">
-            Order confirmation sent to your email.
-        </p>
-        <p class="h2 text-center">
-            Booking id : #00007458
-        </p>
-        <p class="h4 text-center">
-            Take a Screenshot of this page or show the email to the counter.<br>
-        </p>
-        <p class="h4 text-center">
-            Thank you! Hope to see you again.<br>
-        </p>
+    <%@include file="header.jsp" %>
+
+
+    <div class="body_container" style="height: 100vh">
+		
     </div>
 
 
