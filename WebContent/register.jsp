@@ -95,10 +95,22 @@ body {
         <form class="form-signin">
       <img class="mb-4" src="assets/logo.png"  alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      
+      
+      <input type="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" required autofocus>
+      
+      
+      <input type="text" id="fname" class="form-control mb-2" name="fname" placeholder="First Name" required autofocus>
+      
+      
+      <input type="text" id="lname" class="form-control mb-2" name="fname" placeholder="Last Name" required autofocus>
+      
+      
+      <input type="password" id="inputPassword" name="pass" class="form-control mb-2" placeholder="Password" required autofocus>
+      
+      <input type="password" id="inputPassword2" name="passa" class="form-control mb-2	" placeholder="Retype Password" required autofocus>
+      
+      
       
       <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       <a href="login.jsp" class="text-decoration-none "><button class="mt-1 btn btn-lg btn-secondary btn-block" type="button">Login</button></a>

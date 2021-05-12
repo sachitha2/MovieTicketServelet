@@ -31,11 +31,7 @@ public class Login extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		
-		
-		
-		
 		if(login.checkLogin(email, pass) == 1) {
-			
 			
 			//get user id
 			
