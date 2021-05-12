@@ -55,48 +55,26 @@
     </nav>
 
 
-    <div class="container">
-        <h1>Profile Page</h1>
-        <img src="assets/profileimg.png" class="mb-5 border border-success rounded" alt="" width="400">
-        <form action="a" method="GET">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" name="email" class="form-control" id="email" readonly>
-
-            </div>
-            <div class="mb-3">
-                <label for="fname" class="form-label">First Name</label>
-                <input type="password" name="fname" class="form-control" id="fname" readonly required>
-
-            </div>
-            <div class="mb-3">
-                <label for="lname" class="form-label">Last Name</label>
-                <input type="password" name="lname" class="form-control" id="lname" readonly required>
-            </div>
-            <div class="mb-3">
-                <label for="lname" class="form-label">Mobile Number</label>
-                <input type="password" name="mobile" class="form-control" id="mobile" readonly required>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Address</label>
-                <input type="password" name="ad1" class="form-control mb-1" id="ad1" placeholder="Address line 1"
-                    readonly required>
-                <input type="password" name="ad2" class="form-control mb-1" id="ad2" placeholder="Address line 2"
-                    readonly required>
-                <input type="password" name="city" class="form-control mb-1" id="city" placeholder="City" readonly
-                    required>
-                <input type="password" name="province" class="form-control mb-1" id="province" placeholder="Province"
-                    readonly required>
-                <input type="password" name="zip" class="form-control mb-1" id="zip" placeholder="Postal Code" readonly
-                    required>
-            </div>
-
-            <button type="submit" class="btn btn-primary" id="submitbtn" style="display: none;">Submit</button>
-            <button type="reset" class="btn btn-secondary" id="reset" style="display: none;">Reset</button>
-            <button type="button" class="btn btn-warning" id="editBtn" onclick="activate()">Edit</button>
-        </form>
-
-
+    <div class="body_container ">
+        <div class="success-animation">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+        </div>
+        <h1 class="text-center">Booking Completed</h1>
+        <p class="h3 text-center">
+            Order confirmation sent to your email.
+        </p>
+        <p class="h2 text-center">
+            Booking id : #00007458
+        </p>
+        <p class="h4 text-center">
+            Take a Screenshot of this page or show the email to the counter.<br>
+        </p>
+        <p class="h4 text-center">
+            Thank you! Hope to see you again.<br>
+        </p>
     </div>
 
 
@@ -109,25 +87,5 @@
         <!-- Copyright -->
     </footer>
 </body>
-
-<script>
-    function activate() {
-        document.getElementById('editBtn').style.display = 'none';
-        document.getElementById('submitbtn').style.display = '';
-        document.getElementById('reset').style.display = '';
-        document.getElementById('fname').readOnly = false;
-        document.getElementById('lname').readOnly = false;
-        document.getElementById('mobile').readOnly = false;
-        document.getElementById('ad1').readOnly = false;
-        document.getElementById('ad2').readOnly = false;
-        document.getElementById('city').readOnly = false;
-        document.getElementById('province').readOnly = false;
-        document.getElementById('zip').readOnly = false;
-
-
-    }
-
-
-</script>
 
 </html>
