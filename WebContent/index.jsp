@@ -12,7 +12,7 @@
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Hello, world!</title>
+    <title>Wills Films</title>
 </head>
 
 <body>
