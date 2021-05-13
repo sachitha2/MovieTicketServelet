@@ -38,12 +38,28 @@ public class FilmDAO {
 	
 	public ResultSet  TopMovieList() {
 		PreparedStatement ps=null;
-	    String query="SELECT * FROM "+table+";";
+	    String query="SELECT * FROM "+table+"  ORDER BY edate DESC;";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ResultSet rs=ps.executeQuery();
 	        
 	            return rs;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return null;
+	}
+	
+	public Film  GetAFilmById(String id) {
+		PreparedStatement ps=null;
+	    String query="SELECT * FROM "+table+"  WHERE id = "+id+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	Film film = new Film(rs.getInt("id"), rs.getString("title"), rs.getString("sdate"), rs.getString("edate"), rs.getString("director"), rs.getString("producer"), rs.getString("cast"), rs.getString("image"));
+	            return film;
 	        
 	    } catch (SQLException e) {
 	        e.printStackTrace();

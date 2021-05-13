@@ -1,4 +1,11 @@
-<%@ page import = "java.io.*,java.util.*" %>
+<%@ page import="DAO.FilmDAO"%>
+<%@ page import="Employee.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  FilmDAO DAO =new  FilmDAO(connection);
+%>
 <!doctype html>
 <html lang="en">
 
@@ -48,55 +55,31 @@
     <div class="card_container ms-auto">
     	<h1 class=" text-center pb-4">Top Movies</h1>
         <div class="row">
+        
+        	<%
+				try {
+			    	ResultSet rs = DAO.MovieList();
+			    	
+					while(rs.next()) {
+						%>
+						
+							<div class="col-sm-3 mt-3">
+				                <div class="card">
+				                    <div class="card-body text-center">
+				                        <h5 class="card-title"><% out.print(rs.getString("title")); %></h5>
+				                        <p class="card-text"><img class="movie" src="<% out.print(rs.getString("image")); %>" alt=""></p>
+				                        <a href="movies.jsp?id=<% out.print(rs.getString("id")); %>" class="btn btn-primary text-center">Book Now</a>
+				                    </div>
+				                </div>
+				            </div>
+						<%
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			%>
         	
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">The Movies</h5>
-                        <p class="card-text"><img class="movie" src="assets/mov1.jpg" alt=""></p>
-                        <a href="movies.jsp" class="btn btn-primary text-center">Book Now</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">The Movies</h5>
-                        <p class="card-text"><img class="movie" src="assets/mov1.jpg" alt=""></p>
-                        <a href="#" class="btn btn-primary text-center">Book Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">The Movies</h5>
-                        <p class="card-text"><img class="movie" src="assets/mov1.jpg" alt=""></p>
-                        <a href="#" class="btn btn-primary text-center">Book Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">The Movies</h5>
-                        <p class="card-text"><img class="movie" src="assets/mov1.jpg" alt=""></p>
-                        <a href="#" class="btn btn-primary text-center">Book Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">The Movies</h5>
-                        <p class="card-text"><img class="movie" src="assets/mov1.jpg" alt=""></p>
-                        <a href="#" class="btn btn-primary text-center">Book Now</a>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
     </div>
 

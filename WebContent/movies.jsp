@@ -1,3 +1,13 @@
+<%@page import="Model.Film"%>
+<%@ page import="DAO.FilmDAO"%>
+<%@ page import="Employee.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  FilmDAO DAO =new  FilmDAO(connection);
+ 
+%>
 <!doctype html>
 <html lang="en">
 
@@ -17,16 +27,25 @@
 <body onload="load([1,2,4,5,13,18,25,30])">
 	<%@include file="header.jsp" %>
     <div class="body_container">
-        <div class="row headcont">
+    		<%
+    			
+    		if(request.getParameter("id") == null){
+    			%>
+    			<h1 style="text-align: center;">Please select a film</h1>
+    			<%
+    		}else{
+    			 Film film = DAO.GetAFilmById(request.getParameter("id"));
+    			%>
+    			<div class="row headcont">
             <div class="col">
-                <img src="assets/medium-cover.jpg" alt="">
+                <img src="<% out.println(film.getImage()); %>" alt="">
             </div>
             <div class="col">
-                <p class="h2">Test Movie - <span class="h3">2020</span> </p>
+                <p class="h2"><% out.println(film.getTitle()); %></p>
                 <br>
-                <p class="h5">Director - <span class="h5">Kasun Raja</span> </p>
-                <p class="h5">Cast - <span class="h5">Kasun Raja</span> </p>
-                <p class="h5">Producer - <span class="h5">Raj products</span> </p>
+                <p class="h5">Director - <span class="h5"><% out.println(film.getDirector()); %></span> </p>
+                <p class="h5">Cast - <span class="h5"><% out.println(film.getCast()); %></span> </p>
+                <p class="h5">Producer - <span class="h5"><% out.println(film.getProducer()); %></span> </p>
             </div>
         </div>
 
@@ -147,6 +166,10 @@
         </div>
         <!-- Copyright -->
     </footer>
+    			<%
+    		}
+			%>
+        
 </body>
 
 <script>
