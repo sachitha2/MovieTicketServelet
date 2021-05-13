@@ -39,11 +39,11 @@ public class AddFilm extends HttpServlet {
 		if(1 == 1) {
 			
 //			EmployeeModel empModel = new EmployeeModel(0,request.getParameter("name"),request.getParameter("dob"),request.getParameter("address"),request.getParameter("mobile"),request.getParameter("email"),request.getParameter("nic"),request.getParameter("username"),request.getParameter("pass"));
-			out.print(request.getParameter("director"));
-			Film film = new Film(1,"helloo","2020-02-02","2020-02-02",request.getParameter("director"),request.getParameter("prod"),request.getParameter("cast"),request.getParameter("image"));
+			//out.print(request.getParameter("director"));
+			Film film = new Film(1,request.getParameter("title"),"",request.getParameter("edate"),request.getParameter("director"),request.getParameter("prod"),request.getParameter("cast"),request.getParameter("image"));
 			
 			filmDAO.addData(film);
-			//response.sendRedirect("admin/addmovie.jsp");
+			response.sendRedirect("admin/addmovie.jsp");
 		}else {
 			response.sendRedirect("admin/addmovie.jsp");
 		}

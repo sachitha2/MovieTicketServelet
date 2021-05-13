@@ -56,6 +56,10 @@
                 <label for="date" class="form-label">Date of ending</label>
                 <input type="date" required class="form-control" id="date" name="edate">
             </div>
+            <div class="col-md-12">
+                <label for="date" class="form-label">Cover Image URL</label>
+                <input type="text" required class="form-control" id="imageUrl" name="image">
+            </div>
            
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Add Movie</button>
