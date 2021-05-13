@@ -33,31 +33,34 @@
 					while(rs.next()) {
 						%>
 	             			<div class="card">
-					            <form method="GET" action="">
-					                <h5 class="card-header">Film Name<input type="text" id="title<% out.print(rs.getString("id")); %>" class="form-control" value="<% out.print(rs.getString("title")); %>"
+					            <form method="post" action="../UpdateMV">
+					                <h5 class="card-header">Film Name<input name="title" type="text" id="title<% out.print(rs.getString("id")); %>" class="form-control" value="<% out.print(rs.getString("title")); %>"
 					                        readonly>
 					                </h5>
 					                <div class="card-body">
 					                    <img src="<% out.print(rs.getString("image")); %>" class="col-md-2 me-5 float-md-end mb-5 ms-md-1" alt="">
-					                    <h6 class="card-title">Director<input id="dir<% out.print(rs.getString("id")); %>" type="text" class="form-control"
+					                    <h6 class="card-title">Id<input id="fid<% out.print(rs.getString("id")); %>" type="text" class="form-control" name="fid"
+					                            value="<% out.print(rs.getString("id")); %>" readonly>
+					                    </h6>
+					                    <h6 class="card-title">Director<input id="dir<% out.print(rs.getString("id")); %>" type="text" class="form-control" name="director"
 					                            value="<% out.print(rs.getString("director")); %>" readonly>
 					                    </h6>
 					                    <h6 class="card-title">Producer<input id="pro<% out.print(rs.getString("id")); %>" type="text" class="form-control"
-					                            value="<% out.print(rs.getString("producer")); %>" readonly>
+					                            value="<% out.print(rs.getString("producer")); %>" name="producer" readonly>
 					                    </h6>
 					                    <h6 class="card-title">Cast<input id="cast<% out.print(rs.getString("id")); %>" type="text" class="form-control"
-					                            value="<% out.print(rs.getString("cast")); %>" readonly>
+					                            value="<% out.print(rs.getString("cast")); %>" name="cast" readonly>
 					                    </h6>
 					                    
 					                    <h6 class="card-title">Cover Image URL<input id="image<% out.print(rs.getString("id")); %>" type="text" class="form-control"
-					                            value="<% out.print(rs.getString("image")); %>" readonly>
+					                            value="<% out.print(rs.getString("image")); %>" name="image" readonly>
 					                    </h6>
-					                    <p class="card-text">Ends in <input id="date<% out.print(rs.getString("id")); %>" value="<% out.print(rs.getString("edate")); %>" type="date" class="form-control" readonly></p>
+					                    <p class="card-text">Ends in <input id="date<% out.print(rs.getString("id")); %>" name="edate" value="<% out.print(rs.getString("edate")); %>" type="date" class="form-control" readonly></p>
 					
 					                    <a href="../DelAFilm?id=<% out.print(rs.getString("id")); %>" class="btn btn-outline-danger"><img src="../assets/delete.png"></a>
 					                    <b  class="btn btn-outline-warning" onclick="edit(<% out.print(rs.getString("id")); %>)" id="edit<% out.print(rs.getString("id")); %>"><img
 					                            src="../assets/edit.png"></b>
-					                    <button class="btn btn-outline-success" id="submit<% out.print(rs.getString("id")); %>" style="display: none;"><img
+					                    <button class="btn btn-outline-success" type="submit" id="submit<% out.print(rs.getString("id")); %>" style="display: none;"><img
 					                            src="../assets/done.png"></button>
 					
 					                </div>

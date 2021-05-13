@@ -99,5 +99,22 @@ public class FilmDAO {
 		return false;
 		
 	}
+	
+	public boolean updateData(Film film) {
+		PreparedStatement ps=null;
+		 
+	    String query="UPDATE movie SET title = '"+film.getTitle()+"',  edate = '"+film.getEdate()+"', director = '"+film.getDirector()+"', producer = '"+film.getProducer()+"', cast = '"+film.getCast()+"', image = '"+film.getImage()+"' WHERE movie.id = "+film.getId()+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
+		return false;
+	}
 
 }

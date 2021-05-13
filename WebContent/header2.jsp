@@ -13,9 +13,6 @@
                     <li class="nav-item ">
                         <a class="nav-link active btn btn-outline" href="index.jsp" tabindex="-1">Home</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link btn btn-outline" href="findmovies.jsp" tabindex="-1">Browse</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     
