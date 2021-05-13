@@ -1,3 +1,15 @@
+<%@page import="Model.UserModel"%>
+<%@page import="DAO.UserDAO"%>
+<%@ page import="DAO.EmployeeDAO"%>
+<%@ page import="Employee.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  UserDAO DAO =new  UserDAO(connection);
+  UserModel userModel = DAO.getUserData("shpsachitha@gmail.com");
+%>
+
 <!doctype html>
 <html lang="en">
 
@@ -23,21 +35,21 @@
         <form action="a" method="GET">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" name="email" class="form-control" id="email" readonly>
+                <input type="email" name="email" class="form-control" id="email" value="<% out.print(userModel.getEmail()); %>" readonly>
 
             </div>
             <div class="mb-3">
                 <label for="fname" class="form-label">First Name</label>
-                <input type="password" name="fname" class="form-control" id="fname" readonly required>
+                <input type="text" name="fname" class="form-control" id="fname" value="<% out.print(userModel.getFname()); %>" readonly required>
 
             </div>
             <div class="mb-3">
                 <label for="lname" class="form-label">Last Name</label>
-                <input type="password" name="lname" class="form-control" id="lname" readonly required>
+                <input type="text" name="lname" class="form-control" id="lname" value="<% out.print(userModel.getLname()); %>" readonly required>
             </div>
             <div class="mb-3">
                 <label for="lname" class="form-label">Mobile Number</label>
-                <input type="password" name="mobile" class="form-control" id="mobile" readonly required>
+                <input type="text" name="mobile" class="form-control" id="mobile" value="<% out.print(userModel.getType()); %>" readonly required>
             </div>
             
 

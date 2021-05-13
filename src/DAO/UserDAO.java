@@ -118,6 +118,26 @@ public class UserDAO {
 		return c;
 	}
 	
+	public UserModel getUserData(String email) {
+		
+		PreparedStatement ps=null;
+	    String query="SELECT email, type,password,fname,lname  FROM "+table+" WHERE email LIKE '"+email+"';";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	UserModel uModel = new UserModel(rs.getString("email"),rs.getString("password"),rs.getString("fname"),rs.getString("lname"),rs.getInt("type"));
+	        	rs.close();
+	            return uModel;
+	            
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return null;
+	}
+	
 	public boolean del(String name) {
 		PreparedStatement ps=null;
 	    String query="DELETE FROM user WHERE user.username = "+name+";";
