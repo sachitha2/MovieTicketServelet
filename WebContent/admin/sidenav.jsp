@@ -1,3 +1,11 @@
+<%
+
+String type=(String)session.getAttribute("type");
+if(type != null && type.equals("2")){
+	response.sendRedirect("../index.jsp");
+}
+//session.setAttribute("user", null);
+%>
  <div class="container-fluid ">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark "

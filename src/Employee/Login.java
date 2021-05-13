@@ -31,6 +31,8 @@ public class Login extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		
+		
+		
 		if(login.checkLogin(email, pass) == 1) {
 			
 			//get user id
@@ -38,8 +40,15 @@ public class Login extends HttpServlet {
 			//create a session
 			HttpSession session =  request.getSession();
 			session.setAttribute("email", email);
+			session.setAttribute("type", "1");
+			response.sendRedirect("admin/index.jsp");
+		}else if (login.checkLogin(email, pass) == 2){
+			HttpSession session =  request.getSession();
+			session.setAttribute("email", email);
+			session.setAttribute("type", "2");
 			response.sendRedirect("index.jsp");
-		}else {
+		}
+		else {
 			response.sendRedirect("login.jsp?err=e");
 		}
 		

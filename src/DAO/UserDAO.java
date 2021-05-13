@@ -56,7 +56,7 @@ public class UserDAO {
 	public int checkLogin(String email,String pass) {
 		int c = 0;
 		PreparedStatement ps=null;
-	    String query="SELECT COUNT(*) AS rowcount FROM user WHERE email LIKE '"+email+"' AND password LIKE '"+pass+"'";
+	    String query="SELECT COUNT(*) AS rowcount FROM "+table+" WHERE email LIKE '"+email+"' AND password LIKE '"+pass+"'";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ResultSet rs=ps.executeQuery();
@@ -64,8 +64,15 @@ public class UserDAO {
 	        	
 	        	c = rs.getInt("rowcount");
 	        	
+	        	
+	        	
 	        	rs.close();
-	            return c;
+	        	if(c == 1) {
+	        		c = userType(email,pass);
+	        		return c;
+	        	}else {
+	        		return 0;
+	        	}
 	            
 	        
 	    } catch (SQLException e) {
@@ -89,6 +96,28 @@ public class UserDAO {
 		
 		return false;
 	}
+	
+	public int userType(String email,String pass) {
+		int c = 0;
+		PreparedStatement ps=null;
+	    String query="SELECT type  FROM "+table+" WHERE email LIKE '"+email+"' AND password LIKE '"+pass+"';";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	c = rs.getInt("type");
+	        	
+	        	rs.close();
+	            return c;
+	            
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return c;
+	}
+	
 	public boolean del(String name) {
 		PreparedStatement ps=null;
 	    String query="DELETE FROM user WHERE user.username = "+name+";";
