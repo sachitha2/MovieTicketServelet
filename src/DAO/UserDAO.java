@@ -83,7 +83,7 @@ public class UserDAO {
 	
 	public boolean addData(UserModel uModel) {
 		PreparedStatement ps=null;
-	    String query="INSERT INTO user (username, password,type) VALUES ('"+uModel.getUsername()+"', '"+uModel.getPassword()+"', '"+uModel.getType()+"');";
+	    String query="INSERT INTO user (id, email, password, tp, type, profileImage, lname, fname) VALUES (NULL, '"+uModel.getEmail()+"', '"+uModel.getPassword()+"', '0000000000', '2', 'profileimage', '"+uModel.getLname()+"', '"+uModel.getFname()+"');";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ps.executeUpdate();

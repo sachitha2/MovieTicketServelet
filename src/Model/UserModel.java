@@ -2,29 +2,45 @@ package Model;
 
 public class UserModel {
 
-	String username ;
+	String email ;
 	String password;
+	String fname;
+	String lname;
 	int type;
-	public UserModel(String username, String password, int type) {
-		super();
-		this.username = username;
+	public UserModel(String email, String password, String fname, String lname, int type) {
+		
+		this.email = email;
 		this.password = password;
+		this.fname = fname;
+		this.lname = lname;
 		this.type = type;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
+	public String getEmail() {
+		return email;
 	}
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public String getFname() {
+		return fname;
+	}
+	public String getLname() {
+		return lname;
 	}
 	public int getType() {
 		return type;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
 	}
 	public void setType(int type) {
 		this.type = type;

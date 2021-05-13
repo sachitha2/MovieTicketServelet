@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.LoginDAO;
+import DAO.UserDAO;
 import Model.UserModel;
 
-@WebServlet("/AddUser")
+@WebServlet("/Register")
 public class AddUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,16 +35,23 @@ public class AddUser extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		
-		if((request.getParameter("username") != null) &&  (request.getParameter("password") != null)  &&  (request.getParameter("type") != null)) {
+		if((request.getParameter("email") != null) &&  (request.getParameter("fname") != null)  &&  (request.getParameter("lname") != null ) &&  (request.getParameter("pass") != null ) &&  (request.getParameter("passa") != null )) {
 			
 			out.println("<h1>Add user</h1>");
 			
-			LoginDAO loginDAO =new  LoginDAO(connection);
+			UserDAO userDAO = new UserDAO(connection);
+			
+			
+			
 		    
-		    UserModel uModel = new UserModel(request.getParameter("username") ,request.getParameter("password"),1);
-		    out.println("<br>");
-		    out.println(loginDAO.addData(uModel));
+		    UserModel uModel = new UserModel(request.getParameter("email") ,request.getParameter("pass"),request.getParameter("fname"),request.getParameter("lname"),2);
+		    out.println(userDAO.addData(uModel));
 			out.println("parameters ok");
+			HttpSession session =  request.getSession();
+			session.setAttribute("email", request.getParameter("email"));
+			session.setAttribute("type", "2");
+			response.sendRedirect("index.jsp");
+			//TODO check registered or not here
 		}else {
 			out.println("parameters wrong");
 		}

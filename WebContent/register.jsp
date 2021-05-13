@@ -92,25 +92,31 @@ body {
       </head>
       <body class="text-center">
      	
-        <form class="form-signin">
+        <form class="form-signin" action="Register" method="post">
       <img class="mb-4" src="assets/logo.png"  alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Register</h1>
       
       
-      <input type="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" required autofocus>
+      <input type="email" name="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" required autofocus>
       
       
       <input type="text" id="fname" class="form-control mb-2" name="fname" placeholder="First Name" required autofocus>
       
       
-      <input type="text" id="lname" class="form-control mb-2" name="fname" placeholder="Last Name" required autofocus>
+      <input type="text" id="lname" class="form-control mb-2" name="lname" placeholder="Last Name" required autofocus>
       
       
       <input type="password" id="inputPassword" name="pass" class="form-control mb-2" placeholder="Password" required autofocus>
       
       <input type="password" id="inputPassword2" name="passa" class="form-control mb-2	" placeholder="Retype Password" required autofocus>
       
-      
+      <p style="text-align:center;font-size:15px;color:red">
+							<%
+								if(request.getParameter("err")!=null){
+									out.print("Registration failed");
+								}
+							%>
+						</p>
       
       <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       <a href="login.jsp" class="text-decoration-none "><button class="mt-1 btn btn-lg btn-secondary btn-block" type="button">Login</button></a>
