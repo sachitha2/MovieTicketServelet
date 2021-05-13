@@ -32,32 +32,32 @@
 			    	
 					while(rs.next()) {
 						%>
-						
-						
-						<% out.print(rs.getString("id")); %>
-              			<% out.print(rs.getString("title")); %>
 	             			<div class="card">
 					            <form method="GET" action="">
-					                <h5 class="card-header"><input type="text" id="title" class="form-control" value="Kamaii - 2020"
+					                <h5 class="card-header">Film Name<input type="text" id="title<% out.print(rs.getString("id")); %>" class="form-control" value="<% out.print(rs.getString("title")); %>"
 					                        readonly>
 					                </h5>
 					                <div class="card-body">
 					                    <img src="../assets/medium-cover.jpg" class="col-md-2 me-5 float-md-end mb-5 ms-md-1" alt="">
-					                    <h6 class="card-title">Director<input id="dir" type="text" class="form-control"
-					                            value="Special title treatment" readonly>
+					                    <h6 class="card-title">Director<input id="dir<% out.print(rs.getString("id")); %>" type="text" class="form-control"
+					                            value="<% out.print(rs.getString("director")); %>" readonly>
 					                    </h6>
-					                    <h6 class="card-title">Producer<input id="pro" type="text" class="form-control"
-					                            value="Special title treatment" readonly>
+					                    <h6 class="card-title">Producer<input id="pro<% out.print(rs.getString("id")); %>" type="text" class="form-control"
+					                            value="<% out.print(rs.getString("producer")); %>" readonly>
 					                    </h6>
-					                    <h6 class="card-title">Cast<input id="cast" type="text" class="form-control"
-					                            value="Special title treatment" readonly>
+					                    <h6 class="card-title">Cast<input id="cast<% out.print(rs.getString("id")); %>" type="text" class="form-control"
+					                            value="<% out.print(rs.getString("cast")); %>" readonly>
 					                    </h6>
-					                    <p class="card-text">Ends in <input id="date" type="date" class="form-control" readonly></p>
+					                    
+					                    <h6 class="card-title">Cover Image URL<input id="image<% out.print(rs.getString("id")); %>" type="text" class="form-control"
+					                            value="<% out.print(rs.getString("image")); %>" readonly>
+					                    </h6>
+					                    <p class="card-text">Ends in <input id="date<% out.print(rs.getString("id")); %>" value="<% out.print(rs.getString("edate")); %>" type="date" class="form-control" readonly></p>
 					
 					                    <a href="#" class="btn btn-outline-danger"><img src="../assets/delete.png"></a>
-					                    <a href="#" class="btn btn-outline-warning" onclick="edit()" id="edit"><img
-					                            src="../assets/edit.png"></a>
-					                    <button class="btn btn-outline-success" id="submit" style="display: none;"><img
+					                    <b  class="btn btn-outline-warning" onclick="edit(<% out.print(rs.getString("id")); %>)" id="edit<% out.print(rs.getString("id")); %>"><img
+					                            src="../assets/edit.png"></b>
+					                    <button class="btn btn-outline-success" id="submit<% out.print(rs.getString("id")); %>" style="display: none;"><img
 					                            src="../assets/done.png"></button>
 					
 					                </div>
@@ -74,19 +74,15 @@
     </div>
 </body>
 <script>
-    function edit() {
-        document.getElementById('submit').style.display = '';
-        document.getElementById('edit').style.display = 'none';
-        document.getElementById('title').removeAttribute("readonly");
-        document.getElementById('dir').removeAttribute("readonly");
-        document.getElementById('pro').removeAttribute("readonly");
-        document.getElementById('cast').removeAttribute("readonly");
-        document.getElementById('date').removeAttribute("readonly");
-        document.getElementById('9').removeAttribute("disabled");
-        document.getElementById('11').removeAttribute("disabled");
-        document.getElementById('4').removeAttribute("disabled");
-        document.getElementById('7').removeAttribute("disabled");
-        document.getElementById('10').removeAttribute("disabled");
+    function edit(id) {
+        document.getElementById('submit'+id).style.display = '';
+        document.getElementById('edit'+id).style.display = 'none';
+        document.getElementById('title'+id).removeAttribute("readonly");
+        document.getElementById('image'+id).removeAttribute("readonly");
+        document.getElementById('dir'+id).removeAttribute("readonly");
+        document.getElementById('pro'+id).removeAttribute("readonly");
+        document.getElementById('cast'+id).removeAttribute("readonly");
+        document.getElementById('date'+id).removeAttribute("readonly");
 
     }
 
