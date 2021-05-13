@@ -17,22 +17,22 @@
 <body>
     <%@include file="sidenav.jsp" %>
     <div class="admin-cont ">
-        <form class="row g-3 admin-form" enctype="multipart/form-data" onsubmit="return checkbox()">
+        <form class="row g-3 admin-form"  onsubmit="return checkbox()" action="../AddFilm" method="post">
             <h2>Add a New Movie</h2>
             <div class="col-md-6">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" required class="form-control" id="title" aria-describedby="helptxt">
+                <input type="text" required class="form-control" id="title" name="title" aria-describedby="helptxt">
                 <div id="helptxt" class="form-text">
                     Follow the format > Film Name - Year
                 </div>
             </div>
             <div class="col-md-6 mt-n6">
                 <label for="prod" class="form-label">Producer</label>
-                <input type="text" required class="form-control" id="prod">
+                <input type="text" required class="form-control" id="prod" name="prod">
             </div>
             <div class="col-6">
                 <label for="Director" class="form-label">Director</label>
-                <input type="text" required class="form-control" id="Director">
+                <input type="text" required class="form-control" id="Director" name="director">
             </div>
             <div class="col-md-6 mt-n6">
                 <h5>Showing times</h5>
@@ -50,16 +50,13 @@
             </div>
             <div class="col-12">
                 <label for="cast" class="form-label">Cast</label>
-                <input type="text" required class="form-control" id="cast" placeholder="Names seperated by commas">
+                <input type="text" required class="form-control"  placeholder="Names seperated by commas" name="cast">
             </div>
             <div class="col-md-12">
                 <label for="date" class="form-label">Date of ending</label>
-                <input type="date" required class="form-control" id="date">
+                <input type="date" required class="form-control" id="date" name="edate">
             </div>
-            <div class="col-md-12">
-                <label for="inputCity" class="form-label">City</label>
-                <input type="file" required class="form-control" id="inputCity">
-            </div>
+           
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Add Movie</button>
             </div>

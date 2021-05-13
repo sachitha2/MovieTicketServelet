@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import Model.DepartmentModel;
 import Model.EmployeeModel;
+import Model.Film;
 
 
 
@@ -48,6 +49,22 @@ public class FilmDAO {
 	        e.printStackTrace();
 	    }
 		return null;
+	}
+	
+	public boolean addData(Film film) {
+		PreparedStatement ps=null;
+	    String query="INSERT INTO movie (id, title, sdate, edate, director, producer, cast, image) VALUES (NULL, '"+film.getTitle()+"', CURDATE(), '"+film.getEdate()+"', '"+film.getDirector()+"', '"+film.getProducer()+"', '"+film.getCast()+"', '');";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
+		return false;
 	}
 
 }
