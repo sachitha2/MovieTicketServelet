@@ -53,7 +53,7 @@ public class FilmDAO {
 	
 	public boolean addData(Film film) {
 		PreparedStatement ps=null;
-	    String query="INSERT INTO movie (id, title, sdate, edate, director, producer, cast, image) VALUES (NULL, '"+film.getTitle()+"', CURDATE(), '"+film.getEdate()+"', '"+film.getDirector()+"', '"+film.getProducer()+"', '"+film.getCast()+"', '"+film.getImage()+"');";
+	    String query="INSERT INTO "+table+" (id, title, sdate, edate, director, producer, cast, image) VALUES (NULL, '"+film.getTitle()+"', CURDATE(), '"+film.getEdate()+"', '"+film.getDirector()+"', '"+film.getProducer()+"', '"+film.getCast()+"', '"+film.getImage()+"');";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ps.executeUpdate();
@@ -65,6 +65,23 @@ public class FilmDAO {
 	    }
 		
 		return false;
+	}
+	
+	
+	public boolean del(String id) {
+		PreparedStatement ps=null;
+	    String query="DELETE FROM "+table+"  WHERE id = "+id+";";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ps.executeUpdate();
+	        
+	            return true;
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return false;
+		
 	}
 
 }

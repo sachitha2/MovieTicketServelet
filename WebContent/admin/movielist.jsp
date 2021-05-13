@@ -38,7 +38,7 @@
 					                        readonly>
 					                </h5>
 					                <div class="card-body">
-					                    <img src="../assets/medium-cover.jpg" class="col-md-2 me-5 float-md-end mb-5 ms-md-1" alt="">
+					                    <img src="<% out.print(rs.getString("image")); %>" class="col-md-2 me-5 float-md-end mb-5 ms-md-1" alt="">
 					                    <h6 class="card-title">Director<input id="dir<% out.print(rs.getString("id")); %>" type="text" class="form-control"
 					                            value="<% out.print(rs.getString("director")); %>" readonly>
 					                    </h6>
