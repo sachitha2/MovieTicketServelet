@@ -16,6 +16,7 @@
 
 <body>
     <%@include file="header.jsp" %>
+    
 
 
     <div class="body_container" style="height: 100vh">
