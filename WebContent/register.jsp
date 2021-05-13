@@ -99,6 +99,8 @@ body {
       
       <input type="email" name="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" required autofocus>
       
+      <input type="tel" name="tp" id="inputEmail" class="form-control mb-2" placeholder="Telephone number" required autofocus>
+      
       
       <input type="text" id="fname" class="form-control mb-2" name="fname" placeholder="First Name" required autofocus>
       

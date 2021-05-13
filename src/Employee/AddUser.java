@@ -35,7 +35,7 @@ public class AddUser extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		
-		if((request.getParameter("email") != null) &&  (request.getParameter("fname") != null)  &&  (request.getParameter("lname") != null ) &&  (request.getParameter("pass") != null ) &&  (request.getParameter("passa") != null )) {
+		if((request.getParameter("email") != null) &&  (request.getParameter("fname") != null)  &&  (request.getParameter("lname") != null ) &&  (request.getParameter("pass") != null ) &&  (request.getParameter("passa") != null )&&  (request.getParameter("tp") != null )) {
 			
 			out.println("<h1>Add user</h1>");
 			
@@ -44,7 +44,7 @@ public class AddUser extends HttpServlet {
 			
 			
 		    
-		    UserModel uModel = new UserModel(request.getParameter("email") ,request.getParameter("pass"),request.getParameter("fname"),request.getParameter("lname"),2);
+		    UserModel uModel = new UserModel(request.getParameter("email") ,request.getParameter("pass"),request.getParameter("fname"),request.getParameter("lname"),2,request.getParameter("tp"));
 		    if(userDAO.addData(uModel)){
 		    	out.println("parameters ok");
 				HttpSession session =  request.getSession();

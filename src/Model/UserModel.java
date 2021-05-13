@@ -7,14 +7,23 @@ public class UserModel {
 	String fname;
 	String lname;
 	int type;
-	public UserModel(String email, String password, String fname, String lname, int type) {
+	String tp;
+	public UserModel(String email, String password, String fname, String lname, int type,String tp) {
 		
 		this.email = email;
 		this.password = password;
 		this.fname = fname;
 		this.lname = lname;
 		this.type = type;
+		this.tp = tp;
 	}
+	
+	public String getTp() {
+		return tp;
+	}
+	
+	
+	
 	public String getEmail() {
 		return email;
 	}
@@ -46,6 +55,10 @@ public class UserModel {
 		this.type = type;
 	}
 	
+	
+	public void setTp(String tp) {
+		this.tp = tp;
+	}
 	
 	
 }

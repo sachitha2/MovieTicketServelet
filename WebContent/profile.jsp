@@ -7,7 +7,12 @@
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
   UserDAO DAO =new  UserDAO(connection);
-  UserModel userModel = DAO.getUserData("shpsachitha@gmail.com");
+  String email=(String)session.getAttribute("email");
+  UserModel userModel = DAO.getUserData(email);
+  if(userModel == null){
+	  response.sendRedirect("index.jsp");
+  }
+  email = null;
 %>
 
 <!doctype html>
@@ -27,7 +32,7 @@
 </head>
 
 <body>
-<%@include file="header.jsp" %>
+<%@include file="header2.jsp"  %>
     
     <div class="container">
         <h1>Profile Page</h1>
@@ -49,7 +54,7 @@
             </div>
             <div class="mb-3">
                 <label for="lname" class="form-label">Mobile Number</label>
-                <input type="text" name="mobile" class="form-control" id="mobile" value="<% out.print(userModel.getType()); %>" readonly required>
+                <input type="text" name="mobile" class="form-control" id="mobile" value="<% out.print(userModel.getTp()); %>" readonly required>
             </div>
             
 

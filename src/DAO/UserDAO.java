@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import Model.UserModel;
 
 public class UserDAO {
@@ -83,7 +85,7 @@ public class UserDAO {
 	
 	public boolean addData(UserModel uModel) {
 		PreparedStatement ps=null;
-	    String query="INSERT INTO user (id, email, password, tp, type, profileImage, lname, fname) VALUES (NULL, '"+uModel.getEmail()+"', '"+uModel.getPassword()+"', '0000000000', '2', 'assets/profileimg.png', '"+uModel.getLname()+"', '"+uModel.getFname()+"');";
+	    String query="INSERT INTO user (id, email, password, tp, type, profileImage, lname, fname) VALUES (NULL, '"+uModel.getEmail()+"', '"+uModel.getPassword()+"', '"+uModel.getTp()+"', '2', 'assets/profileimg.png', '"+uModel.getLname()+"', '"+uModel.getFname()+"');";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ps.executeUpdate();
@@ -121,13 +123,13 @@ public class UserDAO {
 	public UserModel getUserData(String email) {
 		
 		PreparedStatement ps=null;
-	    String query="SELECT email, type,password,fname,lname  FROM "+table+" WHERE email LIKE '"+email+"';";
+	    String query="SELECT email, type,password,fname,lname,tp  FROM "+table+" WHERE email LIKE '"+email+"';";
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ResultSet rs=ps.executeQuery();
 	        	rs.next();
 	        	
-	        	UserModel uModel = new UserModel(rs.getString("email"),rs.getString("password"),rs.getString("fname"),rs.getString("lname"),rs.getInt("type"));
+	        	UserModel uModel = new UserModel(rs.getString("email"),rs.getString("password"),rs.getString("fname"),rs.getString("lname"),rs.getInt("type"),rs.getString("tp"));
 	        	rs.close();
 	            return uModel;
 	            
