@@ -54,7 +54,7 @@
 					                    </h6>
 					                    <p class="card-text">Ends in <input id="date<% out.print(rs.getString("id")); %>" value="<% out.print(rs.getString("edate")); %>" type="date" class="form-control" readonly></p>
 					
-					                    <a href="#" class="btn btn-outline-danger"><img src="../assets/delete.png"></a>
+					                    <a href="../DelAFilm?id=<% out.print(rs.getString("id")); %>" class="btn btn-outline-danger"><img src="../assets/delete.png"></a>
 					                    <b  class="btn btn-outline-warning" onclick="edit(<% out.print(rs.getString("id")); %>)" id="edit<% out.print(rs.getString("id")); %>"><img
 					                            src="../assets/edit.png"></b>
 					                    <button class="btn btn-outline-success" id="submit<% out.print(rs.getString("id")); %>" style="display: none;"><img
