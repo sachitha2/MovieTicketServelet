@@ -45,12 +45,16 @@ public class AddUser extends HttpServlet {
 			
 		    
 		    UserModel uModel = new UserModel(request.getParameter("email") ,request.getParameter("pass"),request.getParameter("fname"),request.getParameter("lname"),2);
-		    out.println(userDAO.addData(uModel));
-			out.println("parameters ok");
-			HttpSession session =  request.getSession();
-			session.setAttribute("email", request.getParameter("email"));
-			session.setAttribute("type", "2");
-			response.sendRedirect("index.jsp");
+		    if(userDAO.addData(uModel)){
+		    	out.println("parameters ok");
+				HttpSession session =  request.getSession();
+				session.setAttribute("email", request.getParameter("email"));
+				session.setAttribute("type", "2");
+				response.sendRedirect("index.jsp");
+		    }else {
+		    	response.sendRedirect("register.jsp?err=Registration failed");
+		    }
+			
 			//TODO check registered or not here
 		}else {
 			out.println("parameters wrong");
