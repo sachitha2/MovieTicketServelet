@@ -1,6 +1,6 @@
 <%@page import="DAO.LeaveDAO"%>
 <%@ page import="DAO.EmployeeDAO"%>
-<%@ page import="Employee.DB"%>
+<%@ page import="ticket.DB"%>
 <%@ page import="java.sql.*"%>
 <%  DB obj_DB_Connection=new DB();
   Connection connection=null;

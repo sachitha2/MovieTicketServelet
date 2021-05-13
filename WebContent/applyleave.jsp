@@ -1,5 +1,5 @@
 <%@ page import="DAO.EmployeeDAO"%>
-<%@ page import="Employee.DB"%>
+<%@ page import="ticket.DB"%>
 <%@ page import="java.sql.*"%>
 <%  
 	

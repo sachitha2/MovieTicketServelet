@@ -1,4 +1,4 @@
-package Employee;
+package ticket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.DepartmentDAO;
-import DAO.LeaveDAO;
+import DAO.*;
 
-@WebServlet("/LeaveDelete")
-public class LeaveDelete extends HttpServlet {
+@WebServlet("/AcceptReject")
+public class AcceptReject extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DB obj_DB_Connection=new DB();
@@ -26,10 +25,12 @@ public class LeaveDelete extends HttpServlet {
 		//handle delete here
 		if(request.getParameter("id")!=null){
 			out.println("<p>Done</p>");
-			LeaveDAO d = new LeaveDAO(connection);
-			d.del(request.getParameter("id"));
+			LeaveDAO DAO = new LeaveDAO(connection);
+			DAO.AcceptReject(request.getParameter("id"), request.getParameter("s"));
+			response.sendRedirect("adminindex.jsp?msg=done");
 		}else {
-			out.println("Delete id not found");
+			
+			response.sendRedirect("adminindex.jsp?msg=Id not found");
 		}
 	}
 

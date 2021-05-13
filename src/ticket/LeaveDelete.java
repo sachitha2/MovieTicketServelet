@@ -1,4 +1,4 @@
-package Employee;
+package ticket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.DepartmentDAO;
-import DAO.EmployeeDAO;
+import DAO.LeaveDAO;
 
-@WebServlet("/EmpDel")
-public class EmpDel extends HttpServlet {
+@WebServlet("/LeaveDelete")
+public class LeaveDelete extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DB obj_DB_Connection=new DB();
@@ -26,7 +26,7 @@ public class EmpDel extends HttpServlet {
 		//handle delete here
 		if(request.getParameter("id")!=null){
 			out.println("<p>Done</p>");
-			EmployeeDAO d = new EmployeeDAO(connection);
+			LeaveDAO d = new LeaveDAO(connection);
 			d.del(request.getParameter("id"));
 		}else {
 			out.println("Delete id not found");

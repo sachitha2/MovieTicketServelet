@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.DepartmentDAO;
 import DAO.EmployeeDAO;
 import DAO.FilmDAO;
-import Employee.DB;
+import ticket.DB;
 
 @WebServlet("/DelAFilm")
 public class DeleteAFilm extends HttpServlet {

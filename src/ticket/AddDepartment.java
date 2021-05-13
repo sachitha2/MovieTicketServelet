@@ -1,4 +1,4 @@
-package Employee;
+package ticket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.EmployeeDAO;
+import DAO.DepartmentDAO;
+import Model.DepartmentModel;
 import Model.EmployeeModel;
 
-
-@WebServlet("/AddEmp")
-public class AddEmp extends HttpServlet {
+@WebServlet("/AddDepartment")
+public class AddDepartment extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -24,25 +24,28 @@ public class AddEmp extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		DB obj_DB_Connection=new DB();
 		Connection connection=null;
 	    connection=obj_DB_Connection.get_connection();
-	    
-	    EmployeeDAO empDAO = new EmployeeDAO(connection);
+	    PrintWriter out = response.getWriter();
 		
-		PrintWriter out = response.getWriter();
 		
-		if(request.getParameter("addemp").equals("Submit")) {
+		
+		
+		if(request.getParameter("addDep").equals("Submit")) {
 			
-			EmployeeModel empModel = new EmployeeModel(0,request.getParameter("name"),request.getParameter("dob"),request.getParameter("address"),request.getParameter("mobile"),request.getParameter("email"),request.getParameter("nic"),request.getParameter("username"),request.getParameter("pass"));
+		    DepartmentDAO depDAO = new DepartmentDAO(connection);
+		    
+		    DepartmentModel dep = new DepartmentModel(0,request.getParameter("name"));
+		    depDAO.addData(dep);
 			
 			
-			empDAO.addData(empModel);
-			response.sendRedirect("addemp.jsp?msg=done");
+			response.sendRedirect("adddepartment.jsp?msg=done");
 		}else {
-			response.sendRedirect("addemp.jsp?msg=failed");
+			response.sendRedirect("adddepartment.jsp?msg=failed");
 		}
+		
+		
 		doGet(request, response);
 	}
 

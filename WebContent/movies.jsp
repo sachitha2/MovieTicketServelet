@@ -1,6 +1,6 @@
 <%@page import="Model.Film"%>
 <%@ page import="DAO.FilmDAO"%>
-<%@ page import="Employee.DB"%>
+<%@ page import="ticket.DB"%>
 <%@ page import="java.sql.*"%>
 <%  DB obj_DB_Connection=new DB();
   Connection connection=null;
