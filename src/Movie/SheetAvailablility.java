@@ -36,16 +36,23 @@ public class SheetAvailablility extends HttpServlet {
 		    
 		    int x = 1;
 		    try {
-		    	ResultSet rs = sheetDAO.SheetAvailability();
+		    	String filmId = request.getParameter("filmId");
+		    	ResultSet rs = sheetDAO.SheetAvailability(filmId);
 		    	while(rs.next()) {
 					
-					if(x == sheetDAO.AvaulableSheetsCount()) {
+		    		
+		    		if(x == sheetDAO.AvaulableSheetsCount(filmId)) {
 						showTime += "\""+rs.getString("id")+"\"]";
 					}else {
 						showTime += "\""+rs.getString("id")+"\",";
 					}
+					
 					x++;
 				}
+		    	
+		    	if(sheetDAO.AvaulableSheetsCount(filmId) == 0) {
+	    			showTime += "]";
+	    		}
 			    
 		    }catch (SQLException e ) {
 		    	e.printStackTrace();
