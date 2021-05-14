@@ -138,14 +138,15 @@
                             <div class="seat" value="40">40</div>
                         </div>
                         <div class="row">
-                            <div class="seat" value="40">40</div>
                             <div class="seat" value="41">41</div>
+                            
                             <div class="seat" value="42">42</div>
                             <div class="seat" value="43">43</div>
                             <div class="seat " value="44">44</div>
                             <div class="seat " value="45">45</div>
                             <div class="seat " value="46">46</div>
-                            <div class="seat" value="46">46</div>
+                            <div class="seat" value="47">47</div>
+                            <div class="seat" value="48">48</div>
                         </div>
 
                         <p class="text h5">
