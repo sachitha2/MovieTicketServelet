@@ -26,7 +26,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body onload="load([1,2,4,5,13,18,25,30])">
+<body onload="load()">
 	<%@include file="header.jsp" %>
     <div class="body_container">
     		<%
@@ -234,11 +234,26 @@
         updateSelectedCount();
     });
 
-    function load(a) {
-        a.forEach(element => {
-            document.querySelector("div[value='" + element + "']").classList.toggle('occupied');
+    function load(mv) {
+    	//TODO take json data here
+    	
+    						var xmlhttp = new XMLHttpRequest();
+    	        			xmlhttp.onreadystatechange = function() {
+    	        			if (this.readyState === 4 && this.status == 200) {
+    									var myArr = JSON.parse(this.responseText);
+    									console.log(myArr['sheet']);
+    									
+    									a = myArr['sheet'];
+    							        a.forEach(element => {
+    							            document.querySelector("div[value='" + element + "']").classList.toggle('occupied');
 
-        });
+    							        });
+    	           				}
+    	        			};
+    	        			xmlhttp.open("GET", 'SheetAvailability?movie='+mv, true);//generating  get method link
+    	        			xmlhttp.send();
+
+    	
     }
 
 
