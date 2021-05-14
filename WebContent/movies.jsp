@@ -79,6 +79,16 @@
                     <label for="date" class="form-label">Date</label>
                     <input type="date" id="date" class="form-control" required>
                 </div>
+                <div class="mb-4" style="width: 200px;">
+                        <label for="time" class="form-label">Time</label>
+                        <select id="time" class="form-select" required>
+                            <option value="9">9.00 a.m</option>
+                            <option value="11">11.00 a.m</option>
+                            <option value="4">4.00 p.m</option>
+                            <option value="7">7.00 p.m</option>
+                            <option value="10">10.00 p.m</option>
+                        </select>
+                    </div>
                 <ul class="showcase">
                     <li>
                         <div class="seat"></div>
@@ -191,6 +201,7 @@
 </body>
 
 <script>
+	document.getElementById('date').valueAsDate = new Date();
     const container = document.querySelector('.container');
     const seats = document.querySelectorAll('.row .seat:not(.occupied)');
     const count = document.getElementById('count');

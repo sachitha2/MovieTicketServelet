@@ -7,16 +7,21 @@ public class SheetavailabilityModel {
 	int userId;
 	int bookingId;
 	int mTimeId;
+	int sheetNum;
 	
 	
 	
-	public SheetavailabilityModel(int id, String date, int status, int userId, int bookingId, int mTimeId) {
+	public SheetavailabilityModel(int id, String date, int status, int userId, int bookingId, int mTimeId,int sheetNum) {
 		this.id = id;
 		this.date = date;
 		this.status = status;
 		this.userId = userId;
 		this.bookingId = bookingId;
 		this.mTimeId = mTimeId;
+		this.sheetNum = sheetNum;
+	}
+	public int getSheetNum() {
+		return sheetNum;
 	}
 	public int getId() {
 		return id;
