@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.BookingDAO;
 import DAO.SheetDAO;
 import DAO.ShowTimeDAO;
+import Model.Booking;
 import Model.SheetavailabilityModel;
 
 @WebServlet("/BookTickets")
@@ -25,6 +27,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		Connection connection=null;
 	    connection=obj_DB_Connection.get_connection();
 	    SheetDAO sheetDAO = new SheetDAO(connection);
+	    BookingDAO booking = new BookingDAO(connection);
 	    
 	    String totTickets = request.getParameter("tickets");
 	    String sheets = request.getParameter("sheets");
@@ -32,12 +35,18 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	    java.util.List<String> sheetList = Arrays.asList(sheets.split(","));
 	    
 	    
+	    //add data to booking table
 	    int numTickets = Integer.parseInt(totTickets);
+	    Booking bookingModel = new Booking(0, 1, 2,3, numTickets, "2015-10-10");
+	    
+	    int bookingId = booking.addData(bookingModel);
+	    
+	    
 	    int i;
 	    int sheetNum;
 	    for (i = 0;i < numTickets;i++ ) {
 	    	sheetNum = Integer.parseInt(sheetList.get(i));
-	    	SheetavailabilityModel sheetavailabilityModel = new SheetavailabilityModel(0, "2015-10-10", 1, 1, 1, 4,sheetNum);
+	    	SheetavailabilityModel sheetavailabilityModel = new SheetavailabilityModel(0, "2015-10-10", 1, 1, bookingId, 4,sheetNum);
 	    	sheetDAO.addData(sheetavailabilityModel);
 	    }
 	    
