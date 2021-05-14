@@ -36,6 +36,10 @@ public class AddFilm extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
+		out.println(request.getParameter("time[]"));
+		out.println(request.getParameter("time[]"));
+		//TODO
+		
 		if(1 == 1) {
 			
 //			EmployeeModel empModel = new EmployeeModel(0,request.getParameter("name"),request.getParameter("dob"),request.getParameter("address"),request.getParameter("mobile"),request.getParameter("email"),request.getParameter("nic"),request.getParameter("username"),request.getParameter("pass"));
