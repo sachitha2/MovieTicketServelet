@@ -32,7 +32,7 @@ public class SheetAvailablility extends HttpServlet {
 			
 			SheetDAO sheetDAO = new SheetDAO(connection);
 		     
-		    String showTime = "\"sheets\":[";
+		    String showTime = "\"sheet\":[";
 		    
 		    int x = 1;
 		    try {
