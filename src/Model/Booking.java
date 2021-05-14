@@ -2,12 +2,12 @@ package Model;
 
 public class Booking {
 	int id;
-	int userid;
+	String userid;
 	int timeslotId;
 	float total;
 	int numTickets;
 	String date;
-	public Booking(int id, int userid, int timeslotId, float total, int numTickets, String date) {
+	public Booking(int id, String userid, int timeslotId, float total, int numTickets, String date) {
 		
 		this.id = id;
 		this.userid = userid;
@@ -19,7 +19,7 @@ public class Booking {
 	public int getId() {
 		return id;
 	}
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
 	public int getTimeslotId() {
@@ -37,7 +37,7 @@ public class Booking {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public void setTimeslotId(int timeslotId) {

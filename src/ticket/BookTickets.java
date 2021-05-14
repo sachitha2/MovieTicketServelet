@@ -31,7 +31,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	    
 	    String totTickets = request.getParameter("tickets");
 	    int mtimeId =Integer.parseInt(request.getParameter("mtimeId"));  
-	    int userId = Integer.parseInt(request.getParameter("userId")); 
+	    String userId = request.getParameter("userId"); 
 	    String bDate = request.getParameter("bDate");
 	    String sheets = request.getParameter("sheets");
 	    int numTickets = Integer.parseInt(totTickets);

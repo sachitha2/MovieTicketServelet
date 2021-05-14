@@ -26,7 +26,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body onload="takeFilmSlots();load()">
+<body onload="takeFilmSlots()">
 	<%@include file="header.jsp" %>
     <div class="body_container">
     		<%
@@ -87,7 +87,7 @@
                         </select>
                     </div>
                     <button onclick="load()" type="button" class="btn btn-success mb-2">Next</button>
-                <ul class="showcase">
+                <ul class="showcase" id="showcase">
                     <li>
                         <div class="seat"></div>
                         <small>N/A</small>
@@ -102,7 +102,7 @@
                     </li>
                 </ul>
 
-                <div class="container">
+                <div class="container" id="filmHallView">
                     <div class="screen"></div>
 
                     <div class="row">
@@ -198,8 +198,12 @@
 			%>
         
 </body>
-
+<%
+String userMail=(String)session.getAttribute("email");
+%>
 <script>
+	document.getElementById('filmHallView').style.visibility = "hidden";
+	document.getElementById('showcase').style.visibility = "hidden";
 	document.getElementById('date').valueAsDate = new Date();
     const container = document.querySelector('.container');
     const seats = document.querySelectorAll('.row .seat:not(.occupied)');
@@ -241,6 +245,8 @@
     						var xmlhttp = new XMLHttpRequest();
     	        			xmlhttp.onreadystatechange = function() {
     	        			if (this.readyState === 4 && this.status == 200) {
+		    	        				document.getElementById('filmHallView').style.visibility = "visible";
+		    	        				document.getElementById('showcase').style.visibility = "visible";
     									var myArr = JSON.parse(this.responseText);
     									console.log(myArr['sheet']);
     									
@@ -363,7 +369,7 @@
 						
    				}
 			};
-			xmlhttp.open("GET", 'BookTickets?tickets='+numTickets+'&sheets='+sheetOrder+'&mtimeId='+timeslot+'&userId=0&bDate='+date, true);
+			xmlhttp.open("GET", 'BookTickets?tickets='+numTickets+'&sheets='+sheetOrder+'&mtimeId='+timeslot+'&userId=<% out.print(userMail); %>&bDate='+date, true);
 			xmlhttp.send();
     	}else{
     		//TODO resolve err here

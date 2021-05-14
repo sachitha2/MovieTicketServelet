@@ -4,14 +4,14 @@ public class SheetavailabilityModel {
 	int id;
 	String date;
 	int status;
-	int userId;
+	String userId;
 	int bookingId;
 	int mTimeId;
 	int sheetNum;
 	
 	
 	
-	public SheetavailabilityModel(int id, String date, int status, int userId, int bookingId, int mTimeId,int sheetNum) {
+	public SheetavailabilityModel(int id, String date, int status, String userId, int bookingId, int mTimeId,int sheetNum) {
 		this.id = id;
 		this.date = date;
 		this.status = status;
@@ -32,7 +32,7 @@ public class SheetavailabilityModel {
 	public int getStatus() {
 		return status;
 	}
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 	public int getBookingId() {
@@ -50,7 +50,7 @@ public class SheetavailabilityModel {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public void setBookingId(int bookingId) {
