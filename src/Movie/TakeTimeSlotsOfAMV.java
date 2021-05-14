@@ -31,18 +31,21 @@ public class TakeTimeSlotsOfAMV extends HttpServlet {
 	     
 	    String showTime = "\"TimeSlotId\":[";
 	    String showTimeNames = "\"names\":[";
+	    String status = "\"status\":[";
 	    
 	    int x = 1;
 	    try {
-	    	ResultSet rs = showTimeDAO.ShowTimes("40");
+	    	ResultSet rs = showTimeDAO.ShowTimes(request.getParameter("id"));
 	    	while(rs.next()) {
 				
 				if(x == 5) {
 					showTime += "\""+rs.getString("id")+"\"]";
 					showTimeNames += "\""+rs.getString("timeslot")+"\"]";
+					status += "\""+rs.getString("status")+"\"]";
 				}else {
 					showTime += "\""+rs.getString("id")+"\",";
 					showTimeNames += "\""+rs.getString("timeslot")+"\",";
+					status += "\""+rs.getString("status")+"\",";
 				}
 				x++;
 			}
@@ -61,7 +64,7 @@ public class TakeTimeSlotsOfAMV extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 	   
-		out.print("{"+showTime+","+showTimeNames+"}");
+		out.print("{"+showTime+","+showTimeNames+","+status+"}");
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

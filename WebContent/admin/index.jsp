@@ -207,10 +207,51 @@
 	var i = 0;
 	function takeFilmSlots(id){
 		if(id != 0){
+			
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status == 200) {
+        				
+						var myArr = JSON.parse(this.responseText);
+						console.log(myArr['names']);
+						x  = document.getElementById('time');
+						x.innerHTML = "";
+						var i = 0;
+						a = myArr['names'];
+						slotId = myArr['TimeSlotId'];
+						status = myArr['status'];
+						var option = document.createElement("option");
+			        	  option.text = "Select a time slot";
+			        	  option.value = 0;
+			        	  x.add(option);
+						a.forEach(element => {
+				        	console.log(element);
+				        	if(status[i] == "1"){
+				        	var option = document.createElement("option");
+				        	  option.text = element;
+				        	  option.value = slotId[i];
+				        	  x.add(option);
+				        	}
+							i++;
+				        });
+						
+						
+   				}
+			};
+			xmlhttp.open("GET", '../TimeSlotsOfAMV?id='+id, true);//generating  get method link
+			xmlhttp.send();
 			//Request for time slots<option value="11">11.00 a.m</option>
             //<option value="4">4.00 p.m</option>
             //<option value="7">7.00 p.m</option>
             //<option value="10">10.00 p.m</option>
+			
+		}else{
+			x  = document.getElementById('time');
+			x.innerHTML = "";
+			var option = document.createElement("option");
+	      	  option.text = "Select a time slot";
+	      	  option.value = 0;
+	      	  x.add(option);
 			
 		}
 	}
@@ -254,7 +295,7 @@
     							        });
     	           				}
     	        			};
-    	        			xmlhttp.open("GET", '../SheetAvailability', true);//generating  get method link
+    	        			xmlhttp.open("GET", '../SheetAvailability?filmId='+filmname, true);//generating  get method link
     	        			xmlhttp.send();
     		}
 
