@@ -336,6 +336,43 @@
     
     function bookTickets(){
     	console.log(selected);
+    	var numTickets = selected.length;
+    	
+    	
+    	var sheetOrder = "";
+    	for(i = 1;i <= numTickets;i++){
+    		if(numTickets == i){
+    			sheetOrder += selected[i-1];
+    		}else{
+    			sheetOrder += selected[i-1]+",";
+    		}
+    	}
+    	
+    	var filmname =  document.getElementById('film').value;
+		var date = document.getElementById('date').value;
+		var timeslot =  document.getElementById('time').value;
+    	
+		console.log("Total tickets->",numTickets);
+    	console.log("sheets order -> ",sheetOrder);
+    	console.log("film id",filmname);
+    	console.log("date",date);
+    	console.log("timeslot",timeslot);
+    	
+    	if(numTickets != 0){
+    		var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status == 200) {
+        				
+						var myArr = JSON.parse(this.responseText);
+						alert(myArr);
+						
+   				}
+			};
+			xmlhttp.open("GET", '../BookTickets?tickets='+numTickets+'&sheets='+sheetOrder+'&mtimeId='+timeslot+'&userId=25&bDate='+date, true);
+			xmlhttp.send();
+    	}else{
+    		//TODO resolve err here
+    	}
     }
 </script>
 
