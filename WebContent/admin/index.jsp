@@ -1,3 +1,11 @@
+<%@ page import="DAO.FilmDAO"%>
+<%@ page import="ticket.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  FilmDAO DAO =new  FilmDAO(connection);
+%>
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +22,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body onload="load()">
+<body>
    <%@include file="sidenav.jsp" %>
     <div class="admin-cont">
         <div class="body_container">
@@ -25,6 +33,27 @@
                     <select id="movie" disabled>
                         <option value="450">Rs. 450.00</option>
                     </select>
+                    <div class="mb-4" style="width: 200px;">
+                        <label for="film" class="form-label">Film</label>
+                        <select id="film" class="form-select" required>
+                            <option value="0">Select a Film</option>
+                           	<%
+								try {
+							    	ResultSet rs = DAO.MovieList();
+							    	
+									while(rs.next()) {
+										%>
+										
+											<option value="<% out.println(rs.getString("id")); %>"><% out.println(rs.getString("title")); %></option>
+										<%
+									}
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							%>
+                        </select>
+                    </div>
                     <div class="mb-4">
                         <label for="date" class="form-label">Date</label>
                         <input type="date" id="date" class="form-control" required>
@@ -39,6 +68,8 @@
                             <option value="10">10.00 p.m</option>
                         </select>
                     </div>
+                    
+                    <button onclick="load()">Next</button>
                     <ul class="showcase">
                         <li>
                             <div class="seat"></div>
@@ -54,7 +85,7 @@
                         </li>
                     </ul>
 
-                    <div class="container">
+                    <div class="container" id="filmHallView">
                         <div class="screen"></div>
 
                         <div class="row">
@@ -138,6 +169,7 @@
 </body>
 
 <script>
+	
 	document.getElementById('date').valueAsDate = new Date();
     const container = document.querySelector('.container');
     const seats = document.querySelectorAll('.row .seat:not(.occupied)');
@@ -170,19 +202,26 @@
         }
         updateSelectedCount();
     });
-
+    
+   
+	var i = 0;
     function load() {
-    	//TODO take json data here
+    		var filmname;
+    		var date;
+    		var timeslot;
+    			
     	
     						var xmlhttp = new XMLHttpRequest();
     	        			xmlhttp.onreadystatechange = function() {
     	        			if (this.readyState === 4 && this.status == 200) {
+    	        						
     									var myArr = JSON.parse(this.responseText);
     									console.log(myArr['sheet']);
-    									
+    									console.log('i',++i);
     									a = myArr['sheet'];
     							        a.forEach(element => {
-    							            document.querySelector("div[value='" + element + "']").classList.toggle('occupied');
+    							        	console.log(element);
+    							            document.querySelector("div[value='" + element + "']").classList.add('occupied');
 
     							        });
     	           				}
