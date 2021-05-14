@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.EmployeeDAO;
+
 import DAO.FilmDAO;
 import DAO.ShowTimeDAO;
-import Model.EmployeeModel;
 import Model.Film;
 import Model.ShowTime;
 import ticket.DB;
