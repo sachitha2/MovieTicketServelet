@@ -17,7 +17,7 @@ public class SheetDAO {
 	
 	public ResultSet  SheetAvailability() {
 		PreparedStatement ps=null;
-		String query="SELECT COUNT(*) as count FROM sheetavailability INNER JOIN mtime ON sheetavailability.mtimeId= 8 and mtime.movie_id = 40 and sheetavailability.date = '2021-05-14' and mtime.id = 8";
+		String query="SELECT sheetavailability.* FROM sheetavailability INNER JOIN mtime ON sheetavailability.mtimeId= 8 and mtime.movie_id = 40 and sheetavailability.date = '2021-05-14' and mtime.id = 8";
 		   
 		try {
 	        ps=connection.prepareStatement(query);

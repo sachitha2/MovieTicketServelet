@@ -3,6 +3,8 @@ package Movie;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.FilmDAO;
+import DAO.SheetDAO;
+import DAO.ShowTimeDAO;
 import Model.Film;
 import ticket.DB;
 
@@ -18,12 +22,42 @@ import ticket.DB;
 public class SheetAvailablility extends HttpServlet {
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			String objectToReturn = "{\"sheet\":[1,2,3,4,5,6,7,8]}";
-			PrintWriter out = response.getWriter();
+			DB obj_DB_Connection=new DB();
+			Connection connection=null;
+		    connection=obj_DB_Connection.get_connection();
 			
-			out.print(objectToReturn);
+			
+			
+			
+			
+			SheetDAO sheetDAO = new SheetDAO(connection);
+		     
+		    String showTime = "\"sheets\":[";
+		    
+		    int x = 1;
+		    try {
+		    	ResultSet rs = sheetDAO.SheetAvailability();
+		    	while(rs.next()) {
+					
+					if(x == sheetDAO.AvaulableSheetsCount()) {
+						showTime += "\""+rs.getString("id")+"\"]";
+					}else {
+						showTime += "\""+rs.getString("id")+"\",";
+					}
+					x++;
+				}
+			    
+		    }catch (SQLException e ) {
+		    	e.printStackTrace();
+			}
+			
+		    response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			
+			
+			PrintWriter out = response.getWriter();
+		   
+			out.print("{"+showTime+"}");
 		}
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
