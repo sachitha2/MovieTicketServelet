@@ -288,6 +288,10 @@
     									console.log(myArr['sheet']);
     									console.log('i',++i);
     									a = myArr['sheet'];
+    									//clear all before
+    									for (i = 1;i <= 46;i++){
+    										document.querySelector("div[value='" + i + "']").classList.remove('occupied');
+    									}
     							        a.forEach(element => {
     							        	console.log(element);
     							            document.querySelector("div[value='" + element + "']").classList.add('occupied');
