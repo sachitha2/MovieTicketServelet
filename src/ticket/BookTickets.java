@@ -30,14 +30,20 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	    BookingDAO booking = new BookingDAO(connection);
 	    
 	    String totTickets = request.getParameter("tickets");
+	    int mtimeId =Integer.parseInt(request.getParameter("mtimeId"));  
+	    int userId = Integer.parseInt(request.getParameter("userId")); 
+	    String bDate = request.getParameter("bDate");
 	    String sheets = request.getParameter("sheets");
+	    int numTickets = Integer.parseInt(totTickets);
+	    
+	    float tot = 450 * numTickets;
 	    
 	    java.util.List<String> sheetList = Arrays.asList(sheets.split(","));
 	    
 	    
 	    //add data to booking table
-	    int numTickets = Integer.parseInt(totTickets);
-	    Booking bookingModel = new Booking(0, 1, 2,3, numTickets, "2015-10-10");
+	    
+	    Booking bookingModel = new Booking(0, userId, mtimeId,tot, numTickets, bDate);
 	    
 	    int bookingId = booking.addData(bookingModel);
 	    
@@ -46,7 +52,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	    int sheetNum;
 	    for (i = 0;i < numTickets;i++ ) {
 	    	sheetNum = Integer.parseInt(sheetList.get(i));
-	    	SheetavailabilityModel sheetavailabilityModel = new SheetavailabilityModel(0, "2015-10-10", 1, 1, bookingId, 4,sheetNum);
+	    	SheetavailabilityModel sheetavailabilityModel = new SheetavailabilityModel(0, bDate, 1, userId, bookingId, mtimeId,sheetNum);
 	    	sheetDAO.addData(sheetavailabilityModel);
 	    }
 	    
