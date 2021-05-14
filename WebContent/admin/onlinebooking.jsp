@@ -1,3 +1,15 @@
+<%@page import="DAO.BookingDAO"%>
+<%@page import="DAO.ShowTimeDAO"%>
+<%@page import="Model.Film"%>
+<%@ page import="DAO.FilmDAO"%>
+<%@ page import="ticket.DB"%>
+<%@ page import="java.sql.*"%>
+<%  DB obj_DB_Connection=new DB();
+  Connection connection=null;
+  connection=obj_DB_Connection.get_connection();
+  BookingDAO bookingDAO = new BookingDAO(connection);
+ 
+%>
 <!doctype html>
 <html lang="en">
 
@@ -46,16 +58,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark suckerburg</td>
-                            <td>2021-10-12</td>
-                            <td>9.00 a.m</td>
-                            <td>3</td>
-                            <td>Kasun bandara</td>
-                            <td>Booked</td>
-                            <td><img class="cursor" src="../assets/print.png" width="40" onclick="" alt=""></td>
-                        </tr>
+                    	<%
+	                    	ResultSet rs = bookingDAO.AllBookings("ONLINE");
+							try{
+								while(rs.next()) {
+									%>
+									 <tr>
+			                            <th scope="row">1</th>
+			                            <td>FILM NAME</td>
+			                            <td><% out.print(rs.getString("date")); %></td>
+			                            <td><% out.print(rs.getString("timeslot")); %></td>
+			                            <td><% out.print(rs.getString("numtickets")); %></td>
+			                            <td><% out.print(rs.getString("userid")); %></td>
+			                            <td>Booked</td>
+			                            <td><img class="cursor" src="../assets/print.png" width="40" onclick="" alt=""></td>
+			                        </tr>
+									<% 
+								}
+							}catch(SQLException e){
+								e.printStackTrace();
+							}
+                    	%>
+                       
                     </tbody>
                 </table>
 
