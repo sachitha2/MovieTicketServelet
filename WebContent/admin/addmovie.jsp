@@ -37,15 +37,15 @@
             <div class="col-md-6 mt-n6">
                 <h5>Showing times</h5>
                 <h6 id="err" style="display: none; color:red;">Please Select at least one</h6>
-                <input type="checkbox" class="form-check-input" name="time[]" value="9" id="prod">
+                <input type="checkbox" class="form-check-input" name="time9" value="9" id="prod">
                 <label for="prod" class="form-check-label me-3">9.00 a.m</label>
-                <input type="checkbox" class="form-check-input" name="time[]" value="11" id="prod">
+                <input type="checkbox" class="form-check-input" name="time11" value="11" id="prod">
                 <label for="prod" class="form-check-label me-3">11.00 a.m</label>
-                <input type="checkbox" class="form-check-input" name="time[]" value="4" id="prod">
+                <input type="checkbox" class="form-check-input" name="time4" value="4" id="prod">
                 <label for="prod" class="form-check-label me-3">4.00 p.m</label>
-                <input type="checkbox" class="form-check-input" name="time[]" value="7" id="prod">
+                <input type="checkbox" class="form-check-input" name="time7" value="7" id="prod">
                 <label for="prod" class="form-check-label me-3">7.00 p.m</label>
-                <input type="checkbox" class="form-check-input" name="time[]" value="10" id="prod">
+                <input type="checkbox" class="form-check-input" name="time10" value="10" id="prod">
                 <label for="prod" class="form-check-label me-3">10.00 p.m</label>
             </div>
             <div class="col-12">
@@ -97,13 +97,14 @@
 
         var form_data = new FormData(document.querySelector("form"));
 
-        if (!form_data.has("time[]")) {
-            document.getElementById("err").style.display = "";
-            return false;
+        if (form_data.has("time9") || form_data.has("time11") || form_data.has("time4") || form_data.has("time7") || form_data.has("time10")){
+        	document.getElementById("err").style.visibility = "hidden";
+            return true;
         }
         else {
-            document.getElementById("err").style.visibility = "hidden";
-            return true;
+            
+            document.getElementById("err").style.display = "";
+            return false;
         }
 
     }

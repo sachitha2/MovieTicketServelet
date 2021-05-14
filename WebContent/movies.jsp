@@ -1,3 +1,4 @@
+<%@page import="DAO.ShowTimeDAO"%>
 <%@page import="Model.Film"%>
 <%@ page import="DAO.FilmDAO"%>
 <%@ page import="ticket.DB"%>
@@ -6,6 +7,7 @@
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
   FilmDAO DAO =new  FilmDAO(connection);
+  ShowTimeDAO showDao = new ShowTimeDAO(connection);
  
 %>
 <!doctype html>
@@ -46,6 +48,22 @@
                 <p class="h5">Director - <span class="h5"><% out.println(film.getDirector()); %></span> </p>
                 <p class="h5">Cast - <span class="h5"><% out.println(film.getCast()); %></span> </p>
                 <p class="h5">Producer - <span class="h5"><% out.println(film.getProducer()); %></span> </p>
+                <h6>Show Times</h6>
+                <h5><% 
+											ResultSet showRS = showDao.ShowTimes(request.getParameter("id"));
+											try{
+												while(showRS.next()) {
+													if(showRS.getString("status").equals("1")){
+														%>
+														<button disabled="disabled" type="button" class="btn btn-outline-success "><% out.println(showRS.getString("timeslot")); %></button>
+														<%
+													}
+												}
+											}catch(SQLException e){
+												e.printStackTrace();
+											}
+										
+										%></h5>
             </div>
         </div>
 
