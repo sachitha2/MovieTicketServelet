@@ -26,7 +26,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body onload="load()">
+<body onload="load();takeFilmSlots()">
 	<%@include file="header.jsp" %>
     <div class="body_container">
     		<%
@@ -79,16 +79,14 @@
                     <label for="date" class="form-label">Date</label>
                     <input type="date" id="date" class="form-control" required>
                 </div>
-                <div class="mb-4" style="width: 200px;">
+                
+                	<div class="mb-4" style="width: 200px;">
                         <label for="time" class="form-label">Time</label>
                         <select id="time" class="form-select" required>
-                            <option value="9">9.00 a.m</option>
-                            <option value="11">11.00 a.m</option>
-                            <option value="4">4.00 p.m</option>
-                            <option value="7">7.00 p.m</option>
-                            <option value="10">10.00 p.m</option>
+                            
                         </select>
                     </div>
+                    <button onclick="load()" type="button" class="btn btn-success mb-2">Next</button>
                 <ul class="showcase">
                     <li>
                         <div class="seat"></div>
@@ -234,9 +232,11 @@
         updateSelectedCount();
     });
 
-    function load(mv) {
+    function load() {
     	//TODO take json data here
-    	
+    		var filmname =  <% out.println(request.getParameter("id")); %>
+    		var date = document.getElementById('date').value;
+    		var timeslot =  document.getElementById('time').value;
     						var xmlhttp = new XMLHttpRequest();
     	        			xmlhttp.onreadystatechange = function() {
     	        			if (this.readyState === 4 && this.status == 200) {
@@ -244,13 +244,16 @@
     									console.log(myArr['sheet']);
     									
     									a = myArr['sheet'];
+    									for (i = 1;i <= 46;i++){
+    										document.querySelector("div[value='" + i + "']").classList.remove('occupied');
+    									}
     							        a.forEach(element => {
     							            document.querySelector("div[value='" + element + "']").classList.toggle('occupied');
 
     							        });
     	           				}
     	        			};
-    	        			xmlhttp.open("GET", 'SheetAvailability?movie='+mv, true);//generating  get method link
+    	        			xmlhttp.open("GET", 'SheetAvailability?filmId='+filmname+'&slotId='+timeslot+'&dateV='+date, true);//generating  get method link
     	        			xmlhttp.send();
 
     	
@@ -282,6 +285,50 @@
     document.getElementById("date").setAttribute("min", today);
     document.getElementById("date").setAttribute("max", end);
 
+    
+    var i = 0;
+	function takeFilmSlots(){
+		
+			
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status == 200) {
+        				
+						var myArr = JSON.parse(this.responseText);
+						console.log(myArr['names']);
+						x  = document.getElementById('time');
+						x.innerHTML = "";
+						var i = 0;
+						a = myArr['names'];
+						slotId = myArr['TimeSlotId'];
+						status = myArr['status'];
+						var option = document.createElement("option");
+			        	  option.text = "Select a time slot";
+			        	  option.value = 0;
+			        	  x.add(option);
+						a.forEach(element => {
+				        	console.log(element);
+				        	if(status[i] == "1"){
+				        	var option = document.createElement("option");
+				        	  option.text = element;
+				        	  option.value = slotId[i];
+				        	  x.add(option);
+				        	}
+							i++;
+				        });
+						
+						
+   				}
+			};
+			xmlhttp.open("GET", 'TimeSlotsOfAMV?id='+<% out.println(request.getParameter("id")); %>, true);//generating  get method link
+			xmlhttp.send();
+			//Request for time slots<option value="11">11.00 a.m</option>
+            //<option value="4">4.00 p.m</option>
+            //<option value="7">7.00 p.m</option>
+            //<option value="10">10.00 p.m</option>
+			
+		
+	}
 </script>
 
 </html>

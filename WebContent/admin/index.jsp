@@ -153,7 +153,7 @@
                                 id="total">0</span>
                         </p>
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="button" class="btn btn-primary btn-lg">Confirm</button>
+                            <button type="button" class="btn btn-primary btn-lg" onclick="bookTickets()">Confirm</button>
                         </div>
                     </div>
                 </div>
@@ -333,6 +333,10 @@
     document.getElementById("date").setAttribute("value", today);
     document.getElementById("date").setAttribute("max", end);
 
+    
+    function bookTickets(){
+    	console.log(selected);
+    }
 </script>
 
 </html>
