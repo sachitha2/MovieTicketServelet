@@ -91,7 +91,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		
 		
 		PrintWriter out = response.getWriter();
-		out.print("helloo tickets"+totTickets+sheets+sheetList);
+		out.print(bookingId);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

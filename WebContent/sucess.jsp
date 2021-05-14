@@ -29,7 +29,7 @@
             Order confirmation sent to your email.
         </p>
         <p class="h2 text-center">
-            Booking id : #00007458
+            Booking id : #<% out.print(request.getParameter("id")); %>
         </p>
         <p class="h4 text-center">
             Take a Screenshot of this page or show the email to the counter.<br>

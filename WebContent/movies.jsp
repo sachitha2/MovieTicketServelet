@@ -26,7 +26,7 @@
     <title>Hello, world!</title>
 </head>
 
-<body onload="load();takeFilmSlots()">
+<body onload="takeFilmSlots();load()">
 	<%@include file="header.jsp" %>
     <div class="body_container">
     		<%
@@ -171,7 +171,7 @@
                             id="total">0</span>
                     </p>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="button" class="btn btn-primary btn-lg">Continue</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="bookTickets()">Continue</button>
                     </div>
                 </div>
             </div>
@@ -302,10 +302,7 @@
 						a = myArr['names'];
 						slotId = myArr['TimeSlotId'];
 						status = myArr['status'];
-						var option = document.createElement("option");
-			        	  option.text = "Select a time slot";
-			        	  option.value = 0;
-			        	  x.add(option);
+						
 						a.forEach(element => {
 				        	console.log(element);
 				        	if(status[i] == "1"){
@@ -329,6 +326,48 @@
 			
 		
 	}
+	
+	function bookTickets(){
+    	console.log(selected);
+    	var numTickets = selected.length;
+    	
+    	
+    	var sheetOrder = "";
+    	for(i = 1;i <= numTickets;i++){
+    		if(numTickets == i){
+    			sheetOrder += selected[i-1];
+    		}else{
+    			sheetOrder += selected[i-1]+",";
+    		}
+    	}
+    	
+    	var filmname =  <% out.print(request.getParameter("id")) ;%>;
+		var date = document.getElementById('date').value;
+		var timeslot =  document.getElementById('time').value;
+    	
+		console.log("Total tickets->",numTickets);
+    	console.log("sheets order -> ",sheetOrder);
+    	console.log("film id",filmname);
+    	console.log("date",date);
+    	console.log("timeslot",timeslot);
+    	
+    	if(numTickets != 0){
+    		var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status == 200) {
+        				
+						//var myArr = JSON.parse(this.responseText);
+						//alert(myArr);
+						window.location.assign("sucess.jsp?id="+this.responseText);
+						
+   				}
+			};
+			xmlhttp.open("GET", 'BookTickets?tickets='+numTickets+'&sheets='+sheetOrder+'&mtimeId='+timeslot+'&userId=0&bDate='+date, true);
+			xmlhttp.send();
+    	}else{
+    		//TODO resolve err here
+    	}
+    }
 </script>
 
 </html>
