@@ -1,3 +1,4 @@
+<%@page import="DAO.ShowTimeDAO"%>
 <%@ page import="DAO.FilmDAO"%>
 <%@ page import="ticket.DB"%>
 <%@ page import="java.sql.*"%>
@@ -5,6 +6,7 @@
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
   FilmDAO DAO =new  FilmDAO(connection);
+  ShowTimeDAO showDao = new ShowTimeDAO(connection);
 %>
 <!doctype html>
 <html lang="en">
@@ -19,7 +21,7 @@
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Hello, world!</title>
+    <title>Ticket Booking</title>
 </head>
 
 <body>
@@ -35,7 +37,7 @@
                     </select>
                     <div class="mb-4" style="width: 200px;">
                         <label for="film" class="form-label">Film</label>
-                        <select id="film" class="form-select" required>
+                        <select id="film" class="form-select" onchange="takeFilmSlots(this.value)" required>
                             <option value="0">Select a Film</option>
                            	<%
 								try {
@@ -61,16 +63,13 @@
                     <div class="mb-4" style="width: 200px;">
                         <label for="time" class="form-label">Time</label>
                         <select id="time" class="form-select" required>
-                            <option value="9">9.00 a.m</option>
-                            <option value="11">11.00 a.m</option>
-                            <option value="4">4.00 p.m</option>
-                            <option value="7">7.00 p.m</option>
-                            <option value="10">10.00 p.m</option>
+                            <option value="0">Select a Time Slot</option>
+                            
                         </select>
                     </div>
-                    
-                    <button onclick="load()">Next</button>
-                    <ul class="showcase">
+                    <p id="err" style="color:red;font-size:20px"></p>
+                    <button onclick="load()" type="button" class="btn btn-success mb-2">Next</button>
+                    <ul class="showcase" id="showcase">
                         <li>
                             <div class="seat"></div>
                             <small>N/A</small>
@@ -169,7 +168,8 @@
 </body>
 
 <script>
-	
+	document.getElementById('filmHallView').style.visibility = "hidden";
+	document.getElementById('showcase').style.visibility = "hidden";
 	document.getElementById('date').valueAsDate = new Date();
     const container = document.querySelector('.container');
     const seats = document.querySelectorAll('.row .seat:not(.occupied)');
@@ -205,16 +205,44 @@
     
    
 	var i = 0;
+	function takeFilmSlots(id){
+		if(id != 0){
+			//Request for time slots<option value="11">11.00 a.m</option>
+            //<option value="4">4.00 p.m</option>
+            //<option value="7">7.00 p.m</option>
+            //<option value="10">10.00 p.m</option>
+			
+		}
+	}
+	
     function load() {
-    		var filmname;
-    		var date;
-    		var timeslot;
+    		var filmname =  document.getElementById('film').value;
+    		var date = document.getElementById('date').value;
+    		var timeslot =  document.getElementById('time').value;
+    		
+    		console.log(filmname);
+    		console.log(date);
+    		console.log(timeslot);
+    		
+    		if(filmname == 0){
+    			document.getElementById('filmHallView').style.visibility = "hidden";
+    			document.getElementById('showcase').style.visibility = "hidden";
+    			document.getElementById('err').innerHTML = "Please select a film";
+    		}else if(timeslot == 0){
+    			document.getElementById('filmHallView').style.visibility = "hidden";
+    			document.getElementById('showcase').style.visibility = "hidden";
+    			document.getElementById('err').innerHTML = "Please select a time slot";
+    		}else{
+    			
+    	
     			
     	
     						var xmlhttp = new XMLHttpRequest();
     	        			xmlhttp.onreadystatechange = function() {
     	        			if (this.readyState === 4 && this.status == 200) {
-    	        						
+		    	        				document.getElementById('filmHallView').style.visibility = "visible";
+		    	        				document.getElementById('showcase').style.visibility = "visible";
+		    	        				document.getElementById('err').innerHTML = "";
     									var myArr = JSON.parse(this.responseText);
     									console.log(myArr['sheet']);
     									console.log('i',++i);
@@ -228,6 +256,7 @@
     	        			};
     	        			xmlhttp.open("GET", '../SheetAvailability', true);//generating  get method link
     	        			xmlhttp.send();
+    		}
 
     	
     }
