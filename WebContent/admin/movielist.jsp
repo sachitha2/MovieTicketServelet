@@ -1,3 +1,4 @@
+<%@page import="DAO.ShowTimeDAO"%>
 <%@ page import="DAO.FilmDAO"%>
 <%@ page import="ticket.DB"%>
 <%@ page import="java.sql.*"%>
@@ -5,6 +6,7 @@
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
   FilmDAO DAO =new  FilmDAO(connection);
+  ShowTimeDAO showDao = new ShowTimeDAO(connection);
 %>
 <!doctype html>
 <html lang="en">
@@ -57,6 +59,26 @@
 					                    </h6>
 					                    <p class="card-text">Ends in <input id="date<% out.print(rs.getString("id")); %>" name="edate" value="<% out.print(rs.getString("edate")); %>" type="date" class="form-control" readonly></p>
 					
+										<h6>Show Times</h6>
+										<h5><% 
+											ResultSet showRS = showDao.ShowTimes(rs.getString("id"));
+											try{
+												while(showRS.next()) {
+													if(showRS.getString("status").equals("1")){
+														%>
+														<button type="button" class="btn btn-outline-danger"><% out.println(showRS.getString("timeslot")); %></button>
+														<%
+													}else{
+														%>
+														<button type="button" class="btn  btn-outline-success"><% out.println(showRS.getString("timeslot")); %></button>
+														<%
+													}
+												}
+											}catch(SQLException e){
+												e.printStackTrace();
+											}
+										
+										%></h5>
 					                    <a href="../DelAFilm?id=<% out.print(rs.getString("id")); %>" class="btn btn-outline-danger"><img src="../assets/delete.png"></a>
 					                    <b  class="btn btn-outline-warning" onclick="edit(<% out.print(rs.getString("id")); %>)" id="edit<% out.print(rs.getString("id")); %>"><img
 					                            src="../assets/edit.png"></b>
