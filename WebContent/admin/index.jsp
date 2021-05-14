@@ -368,7 +368,7 @@
 						
    				}
 			};
-			xmlhttp.open("GET", '../BookTickets?tickets='+numTickets+'&sheets='+sheetOrder+'&mtimeId='+timeslot+'&userId=25&bDate='+date, true);
+			xmlhttp.open("GET", '../BookTickets?tickets='+numTickets+'&sheets='+sheetOrder+'&mtimeId='+timeslot+'&userId=0&bDate='+date, true);
 			xmlhttp.send();
     	}else{
     		//TODO resolve err here

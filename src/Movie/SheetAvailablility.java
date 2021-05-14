@@ -44,9 +44,9 @@ public class SheetAvailablility extends HttpServlet {
 					
 		    		
 		    		if(x == sheetDAO.AvaulableSheetsCount(filmId,slotId,dateV)) {
-						showTime += "\""+rs.getString("id")+"\"]";
+						showTime += "\""+rs.getString("sheet")+"\"]";
 					}else {
-						showTime += "\""+rs.getString("id")+"\",";
+						showTime += "\""+rs.getString("sheet")+"\",";
 					}
 					
 					x++;
