@@ -363,8 +363,9 @@
 			xmlhttp.onreadystatechange = function() {
 			if (this.readyState === 4 && this.status == 200) {
         				
-						var myArr = JSON.parse(this.responseText);
-						alert(myArr);
+						//var myArr = JSON.parse(this.responseText);
+						//alert(myArr);
+						window.location.assign("index.jsp");
 						
    				}
 			};
