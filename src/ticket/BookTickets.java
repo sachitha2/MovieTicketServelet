@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.tools.javac.util.List;
-
+import DAO.SheetDAO;
 import DAO.ShowTimeDAO;
+import Model.SheetavailabilityModel;
 
 @WebServlet("/BookTickets")
 public class BookTickets  extends HttpServlet {
@@ -24,12 +24,23 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		DB obj_DB_Connection=new DB();
 		Connection connection=null;
 	    connection=obj_DB_Connection.get_connection();
-	    ShowTimeDAO showTimeDAO = new ShowTimeDAO(connection);
+	    SheetDAO sheetDAO = new SheetDAO(connection);
 	    
 	    String totTickets = request.getParameter("tickets");
 	    String sheets = request.getParameter("sheets");
 	    
-	    java.util.List<String> elephantList = Arrays.asList(sheets.split(","));
+	    java.util.List<String> sheetList = Arrays.asList(sheets.split(","));
+	    
+	    
+	    int numTickets = Integer.parseInt(totTickets);
+	    int i;
+	    int sheetNum;
+	    for (i = 0;i < numTickets;i++ ) {
+	    	sheetNum = Integer.parseInt(sheetList.get(i));
+	    	SheetavailabilityModel sheetavailabilityModel = new SheetavailabilityModel(0, "2015-10-10", 1, 1, 1, 4,sheetNum);
+	    	sheetDAO.addData(sheetavailabilityModel);
+	    }
+	    
 	     
 //	    String showTime = "\"TimeSlotId\":[";
 //	    String showTimeNames = "\"names\":[";
@@ -65,10 +76,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		
 		
 		PrintWriter out = response.getWriter();
-	   
-//		out.print("{"+showTime+","+showTimeNames+","+status+"}");
-		
-		out.print("helloo tickets"+totTickets+sheets+elephantList);
+		out.print("helloo tickets"+totTickets+sheets+sheetList);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

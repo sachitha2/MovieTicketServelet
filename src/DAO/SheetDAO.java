@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import Model.Film;
+import Model.SheetavailabilityModel;
+
 public class SheetDAO {
 	public String table = "sheetavailability";
 	Connection connection;
@@ -44,6 +47,26 @@ public class SheetDAO {
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
+		return 0;
+	}
+	
+	public int addData(SheetavailabilityModel sheetavailabilityModel) {
+		PreparedStatement ps=null;
+	    String query="INSERT INTO sheetavailability (id, date, status, userid, bookingId, mtimeId, sheet) VALUES (NULL, '"+sheetavailabilityModel.getDate()+"', '"+sheetavailabilityModel.getStatus()+"', '"+sheetavailabilityModel.getUserId()+"', '"+sheetavailabilityModel.getBookingId()+"', '"+sheetavailabilityModel.getmTimeId()+"', '"+sheetavailabilityModel.getSheetNum()+"');";
+	    try {
+	    	String autogenColumns[] = {"id"};
+	        ps=connection.prepareStatement(query, autogenColumns);
+	        ps.executeUpdate();
+	       
+	        	   ResultSet rs = ps.getGeneratedKeys();
+	        	    rs.next();
+	        	   return rs.getInt(1);
+	        	
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		
 		return 0;
 	}
 	
