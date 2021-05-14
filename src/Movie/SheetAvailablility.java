@@ -38,11 +38,12 @@ public class SheetAvailablility extends HttpServlet {
 		    try {
 		    	String filmId = request.getParameter("filmId");
 		    	String slotId = request.getParameter("slotId");
-		    	ResultSet rs = sheetDAO.SheetAvailability(filmId,slotId);
+		    	String dateV = request.getParameter("dateV");
+		    	ResultSet rs = sheetDAO.SheetAvailability(filmId,slotId,dateV);
 		    	while(rs.next()) {
 					
 		    		
-		    		if(x == sheetDAO.AvaulableSheetsCount(filmId,slotId)) {
+		    		if(x == sheetDAO.AvaulableSheetsCount(filmId,slotId,dateV)) {
 						showTime += "\""+rs.getString("id")+"\"]";
 					}else {
 						showTime += "\""+rs.getString("id")+"\",";
@@ -51,7 +52,7 @@ public class SheetAvailablility extends HttpServlet {
 					x++;
 				}
 		    	
-		    	if(sheetDAO.AvaulableSheetsCount(filmId,slotId) == 0) {
+		    	if(sheetDAO.AvaulableSheetsCount(filmId,slotId,dateV) == 0) {
 	    			showTime += "]";
 	    		}
 			    

@@ -15,9 +15,9 @@ public class SheetDAO {
 		this.connection = connection;
 	}
 	
-	public ResultSet  SheetAvailability(String filmId,String slotId) {
+	public ResultSet  SheetAvailability(String filmId,String slotId,String dateV) {
 		PreparedStatement ps=null;
-		String query="SELECT sheetavailability.* FROM sheetavailability INNER JOIN mtime ON sheetavailability.mtimeId= "+slotId+" and mtime.movie_id = "+filmId+" and sheetavailability.date = '2021-05-14' and mtime.id = "+slotId;
+		String query="SELECT sheetavailability.* FROM sheetavailability INNER JOIN mtime ON sheetavailability.mtimeId= "+slotId+" and mtime.movie_id = "+filmId+" and sheetavailability.date = '"+dateV+"' and mtime.id = "+slotId;
 		   
 		try {
 	        ps=connection.prepareStatement(query);
@@ -32,9 +32,9 @@ public class SheetDAO {
 	}
 	
 	
-	public int  AvaulableSheetsCount(String filmId,String slotId) {
+	public int  AvaulableSheetsCount(String filmId,String slotId,String dateV) {
 		PreparedStatement ps=null;
-	    String query="SELECT COUNT(*) as count FROM sheetavailability INNER JOIN mtime ON sheetavailability.mtimeId= "+slotId+" and mtime.movie_id = "+filmId+" and sheetavailability.date = '2021-05-14' and mtime.id = "+slotId;
+	    String query="SELECT COUNT(*) as count FROM sheetavailability INNER JOIN mtime ON sheetavailability.mtimeId= "+slotId+" and mtime.movie_id = "+filmId+" and sheetavailability.date = '"+dateV+"' and mtime.id = "+slotId;
 	    try {
 	        ps=connection.prepareStatement(query);
 	        ResultSet rs=ps.executeQuery();

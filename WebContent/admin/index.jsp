@@ -299,7 +299,7 @@
     							        });
     	           				}
     	        			};
-    	        			xmlhttp.open("GET", '../SheetAvailability?filmId='+filmname+'&slotId='+timeslot, true);//generating  get method link
+    	        			xmlhttp.open("GET", '../SheetAvailability?filmId='+filmname+'&slotId='+timeslot+'&dateV='+date, true);//generating  get method link
     	        			xmlhttp.send();
     		}
 
