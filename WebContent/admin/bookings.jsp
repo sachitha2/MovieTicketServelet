@@ -74,7 +74,7 @@
 			                            <td>Booked</td>
 			                            <td>
 			                            	<!--  <img class="cursor" src="../assets/print.png" width="40" onclick="" alt=""> -->
-			                            	<img class="cursor" src="../assets/delete.png" width="40" onclick="" alt="">
+			                            	<a href="../DeleteABooking?id=<%  out.print(rs.getString("id")); %>"><img class="cursor" src="../assets/delete.png" width="40" onclick="" alt=""></a>
 			                            </td>
 			                        </tr>
 									<% 
