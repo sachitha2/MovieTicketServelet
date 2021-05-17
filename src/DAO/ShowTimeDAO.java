@@ -48,4 +48,21 @@ public class ShowTimeDAO {
 		
 		return false;
 	}
+	
+	public String  ShowTimeById(String id) {
+		PreparedStatement ps=null;
+	    String query="SELECT * FROM mtime WHERE id = "+id;
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	 return rs.getString("timeslot");
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return "";
+		
+	}
 }
