@@ -37,10 +37,10 @@ public class BookingDAO {
 		return 0;
 	}
 	
-	public ResultSet  AllBookings(String s) {
+	public ResultSet  AllBookings(String s,String sText) {
 		if(s.equals("ONLINE")) {
 			PreparedStatement ps=null;
-		    String query="SELECT * FROM booking WHERE userid != '0' ORDER BY booking.date DESC";
+		    String query="SELECT * FROM booking WHERE userid != '0' "+sText+" ORDER BY booking.date DESC";
 		    try {
 		        ps=connection.prepareStatement(query);
 		        ResultSet rs=ps.executeQuery();
@@ -53,7 +53,7 @@ public class BookingDAO {
 			return null;
 		}else {
 			PreparedStatement ps=null;
-		    String query="SELECT * FROM booking  ORDER BY booking.date DESC";
+		    String query="SELECT * FROM booking "+sText+" ORDER BY booking.date DESC";
 		    try {
 		        ps=connection.prepareStatement(query);
 		        ResultSet rs=ps.executeQuery();

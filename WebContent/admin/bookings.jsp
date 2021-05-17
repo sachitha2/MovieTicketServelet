@@ -9,6 +9,12 @@
   connection=obj_DB_Connection.get_connection();
   BookingDAO bookingDAO = new BookingDAO(connection);
   FilmDAO filmDAO = new FilmDAO(connection);
+  
+  
+  String sQuery = "";
+  if(request.getParameter("date") != null){
+	  sQuery = " WHERE date = '"+request.getParameter("date")+"'";
+  }
 %>
 <!doctype html>
 <html lang="en">
@@ -31,23 +37,12 @@
     <div class="admin-cont">
         <form class="row g-3 admin-form" enctype="multipart/form-data" onsubmit="return checkbox()">
             <h2>Bookings</h2>
-            <div class="col-md-6">
+            <div class="col-md-6 ">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date">
-            </div>
-            <div class="col-md-4">
-                <label for="time" class="form-label">Time</label>
-                <select id="time" class="form-select" id="time" required>
-                    <option value="a" selected hidden>---select</option>
-                    <option value="9">9.00 a.m</option>
-                    <option value="11">11.00 a.m</option>
-                    <option value="4">4.00 p.m</option>
-                    <option value="7">7.00 p.m</option>
-                    <option value="10">10.00 p.m</option>
-                </select>
-            </div>
-            <div class="col-12 ms-6">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <form method="get" action="">
+                	<input name="date" type="date" class="form-control" id="date">
+                	<button type="submit" class="btn btn-primary mt-2">Search</button>
+                </form>
             </div>
         </form>
         <table class="table admin-table">
@@ -65,7 +60,7 @@
             </thead>
             <tbody>
                 <%
-	                    	ResultSet rs = bookingDAO.AllBookings("ONLINE");
+	                    	ResultSet rs = bookingDAO.AllBookings("",sQuery);
 							try{
 								while(rs.next()) {
 									%>

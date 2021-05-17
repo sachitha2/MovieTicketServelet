@@ -8,7 +8,11 @@
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
   BookingDAO bookingDAO = new BookingDAO(connection);
- 
+  FilmDAO filmDAO = new FilmDAO(connection);
+  String sQuery = "";
+  if(request.getParameter("id") != null){
+	  sQuery = " and id = '"+request.getParameter("id")+"'";
+  }
 %>
 <!doctype html>
 <html lang="en">
@@ -35,13 +39,15 @@
 
                 <div class="col-auto">
                     <label for="id" class="visually-hidden">Password</label>
-                    <input type="text" name="id"
-                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                        class="form-control" id="id" placeholder="Booking id">
+                    	<form method="get" action="">
+                    		<input type="text" name="id"
+                        	oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                        	class="form-control" id="id" placeholder="Booking id">
+                        
+                        	<button type="submit" name="submit" class="btn btn-primary mt-2">Check</button>
+                    	</form>
                 </div>
-                <div class="col-auto">
-                    <button type="submit" name="submit" class="btn btn-primary mb-3">Check</button>
-                </div>
+                
             </form>
             <div>
                 <table class="table admin-table">
@@ -59,13 +65,13 @@
                     </thead>
                     <tbody>
                     	<%
-	                    	ResultSet rs = bookingDAO.AllBookings("ONLINE");
+	                    	ResultSet rs = bookingDAO.AllBookings("ONLINE",sQuery);
 							try{
 								while(rs.next()) {
 									%>
 									 <tr>
-			                            <th scope="row">1</th>
-			                            <td>FILM NAME</td>
+			                            <th scope="row"><% out.print(rs.getString("id")); %></th>
+			                            <td><% out.print(filmDAO.MovieNameByTimeId(rs.getString("timeslot"))); %></td>
 			                            <td><% out.print(rs.getString("date")); %></td>
 			                            <td><% out.print(rs.getString("timeslot")); %></td>
 			                            <td><% out.print(rs.getString("numtickets")); %></td>
