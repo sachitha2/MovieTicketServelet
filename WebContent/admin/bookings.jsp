@@ -8,7 +8,7 @@
   Connection connection=null;
   connection=obj_DB_Connection.get_connection();
   BookingDAO bookingDAO = new BookingDAO(connection);
- 
+  FilmDAO filmDAO = new FilmDAO(connection);
 %>
 <!doctype html>
 <html lang="en">
@@ -70,14 +70,17 @@
 								while(rs.next()) {
 									%>
 									 <tr>
-			                            <th scope="row">1</th>
-			                            <td>FILM NAME</td>
+			                            <th scope="row"><% out.print(rs.getString("id")); %></th>
+			                            <td><% out.print(filmDAO.MovieNameByTimeId(rs.getString("timeslot"))); %></td>
 			                            <td><% out.print(rs.getString("date")); %></td>
 			                            <td><% out.print(rs.getString("timeslot")); %></td>
 			                            <td><% out.print(rs.getString("numtickets")); %></td>
 			                            <td><% out.print(rs.getString("userid")); %></td>
 			                            <td>Booked</td>
-			                            <td><img class="cursor" src="../assets/print.png" width="40" onclick="" alt=""></td>
+			                            <td>
+			                            	<!--  <img class="cursor" src="../assets/print.png" width="40" onclick="" alt=""> -->
+			                            	<img class="cursor" src="../assets/delete.png" width="40" onclick="" alt="">
+			                            </td>
 			                        </tr>
 									<% 
 								}

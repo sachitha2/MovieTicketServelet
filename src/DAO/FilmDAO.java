@@ -119,5 +119,22 @@ public class FilmDAO {
 		
 		return false;
 	}
+	
+	public String  MovieNameByTimeId(String id) {
+		PreparedStatement ps=null;
+	    String query="SELECT * FROM movie WHERE id = (SELECT movie_id FROM mtime WHERE id = "+id+")";
+	    try {
+	        ps=connection.prepareStatement(query);
+	        ResultSet rs=ps.executeQuery();
+	        	rs.next();
+	        	
+	        	 return rs.getString("title");
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return "";
+		
+	}
 
 }
